@@ -51,7 +51,7 @@ V této části se budeme zabývat odhady veličin často používaných při ř
     &= \frac{e^2\left(\frac{n}{e}\right)^n}{\left(\frac{n}{n-1}\right)^{n-1}}\\
     &= \frac{e^2\left(\frac{n}{e}\right)^n}{\left(1+\frac{1}{n-1}\right)^{n-1}}
   \end{align*}
-  Přišel čas na připomenutí faktu, že $\left(1-\frac{1}{n}\right)^n\leq \frac{1}{e}$. Jelikož je však část výraz ve jmenovateli, nesmíme zapomenout nerovnost otočit.
+  Přišel čas na připomenutí faktu, že $\left(1-\frac{1}{n}\right)^n\leq \frac{1}{e}$. Jelikož je však část výrazu ve jmenovateli, nesmíme zapomenout nerovnost otočit.
   \begin{align*}
     \frac{e^2\left(\frac{n}{e}\right)^n}{\left(1+\frac{1}{n-1}\right)^{n-1}}
     &\geq \frac{e^2\left(\frac{n}{e}\right)^n}{\left(e^{\frac{1}{n-1}}\right)^{n-1}}\\
@@ -84,10 +84,25 @@ Stirlingův odhad faktoriálu je ve skutečnosti natolik těsný, že jej může
     \leq \frac{n^k}{e\left(\frac{k}{e}\right)^k}
     = \frac{1}{e}\cdot\left(\frac{en}{k}\right)^k
   \end{align*}
+  
+  Důkaz dolního odhadu bude trochu komplikovanější, budeme k němu muset použít oba odhady faktoriálu, které jsme dokázali dříve. Protože odhadujeme celý zlomek, musíme ve jmenovateli opět použít opačný odhad.
   \begin{align*}
     \binom{n}{k}
-    \geq \dots % todo
-    \geq \left(\frac{n}{k}\right)^k
+    = \frac{n!}{k!(n-k)!}
+    \geq \frac{en\left(\frac{n}{e}\right)^n}{e\left(\frac{k}{e}\right)^ke\left(\frac{n-k}{e}\right)^{n-k}}
+    = \frac{n^{n+1}}{k^k(n-k)^{n-k}}
+  \end{align*}
+  
+  Hodně mocnin se nám podařilo zkrátit, nyní musíme postupovat ekvivalentními úpravami.
+  \begin{align*}
+    \frac{n^{n+1}}{k^k(n-k)^{n-k}}
+    &\stackrel{?}{\geq} \left(\frac{n}{k}\right)^k=\frac{n^k}{k^k}\\
+    \frac{n^{n+1}}{(n-k)^{n-k}}
+    &\stackrel{?}{\geq} n^k\\
+    n\cdot \frac{n^{n-k}}{(n-k)^{n-k}}
+    &\stackrel{?}{\geq} 1\\
+    n\cdot\underbrace{\left(\frac{n}{n-k}\right)^{n-k}}_{\geq 1}
+    &\geq 1
   \end{align*}
 \end{t_proof}
 
