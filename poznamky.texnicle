@@ -79,7 +79,7 @@
         <attribute name="name" type="string">poznamky</attribute>
         <attribute name="folder" type="string">/Users/petrmanek/Documents/MFF UK/Poznámky</attribute>
         <relationship name="mainfile" type="1/1" destination="FILE" idrefs="z107"></relationship>
-        <relationship name="selected" type="1/1" destination="FILE" idrefs="z105"></relationship>
+        <relationship name="selected" type="1/1" destination="FILE" idrefs="z111"></relationship>
         <relationship name="settings" type="1/1" destination="SETTINGS" idrefs="z102"></relationship>
         <relationship name="uisettings" type="1/1" destination="UISETTINGS" idrefs="z104"></relationship>
         <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z113 z118 z110 z119 z105 z109 z106 z120 z111 z112 z107"></relationship>
@@ -88,7 +88,7 @@
         <attribute name="showlogwarningitems" type="bool">0</attribute>
         <attribute name="showloginfoitems" type="bool">0</attribute>
         <attribute name="showlogerroritems" type="bool">1</attribute>
-        <attribute name="pdfviewscrollrect" type="string">{{0, 17380.131634535308}, {604, 577.71125265384762}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 10652.135881104397}, {604, 577.71125264738112}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -99,7 +99,7 @@
         <relationship name="project" type="1/1" destination="PROJECT" idrefs="z103"></relationship>
     </object>
     <object type="TEXFILE" id="z105">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">-1</attribute>
         <attribute name="visiblerect" type="string">{{0, 1937}, {626, 772}}</attribute>
         <attribute name="lasteditdate" type="date">424647845.96716099977493286133</attribute>
         <attribute name="istext" type="bool">1</attribute>
@@ -162,12 +162,12 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z110">
-        <attribute name="visiblerect" type="string">{{0, 0}, {641, 682}}</attribute>
-        <attribute name="cursor" type="string">{6230, 0}</attribute>
+        <attribute name="visiblerect" type="string">{{0, 1507}, {632, 772}}</attribute>
+        <attribute name="cursor" type="string">{930, 0}</attribute>
         <attribute name="wasopen" type="bool">-1</attribute>
         <attribute name="lasteditdate" type="date">424172570.01578599214553833008</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">424515618.43995499610900878906</attribute>
+        <attribute name="fileloaddate" type="date">424526221.74343502521514892578</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="sortindex" type="int32">4</attribute>
         <attribute name="name" type="string">2vytvorky.tex</attribute>
@@ -180,12 +180,12 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z111">
-        <attribute name="visiblerect" type="string">{{0, 2766}, {626, 772}}</attribute>
-        <attribute name="cursor" type="string">{7477, 0}</attribute>
-        <attribute name="wasopen" type="bool">-1</attribute>
-        <attribute name="lasteditdate" type="date">424260737.36729097366333007812</attribute>
+        <attribute name="visiblerect" type="string">{{0, 4181}, {626, 772}}</attribute>
+        <attribute name="cursor" type="string">{10915, 0}</attribute>
+        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="lasteditdate" type="date">424648234.17082601785659790039</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">424526221.74873000383377075195</attribute>
+        <attribute name="fileloaddate" type="date">424648234.65615797042846679688</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="sortindex" type="int32">5</attribute>
         <attribute name="name" type="string">3roviny.tex</attribute>
@@ -260,7 +260,7 @@
     <object type="TEXFILE" id="z118">
         <attribute name="visiblerect" type="string">{{0, 2394}, {626, 772}}</attribute>
         <attribute name="cursor" type="string">{6342, 0}</attribute>
-        <attribute name="wasopen" type="bool">2</attribute>
+        <attribute name="wasopen" type="bool">-1</attribute>
         <attribute name="lasteditdate" type="date">424533996.11940598487854003906</attribute>
         <attribute name="istext" type="bool">1</attribute>
         <attribute name="fileloaddate" type="date">424533996.46521598100662231445</attribute>
