@@ -79,7 +79,7 @@
         <attribute name="name" type="string">poznamky</attribute>
         <attribute name="folder" type="string">/Users/petrmanek/Documents/MFF UK/Poznámky</attribute>
         <relationship name="mainfile" type="1/1" destination="FILE" idrefs="z107"></relationship>
-        <relationship name="selected" type="1/1" destination="FILE" idrefs="z111"></relationship>
+        <relationship name="selected" type="1/1" destination="FILE" idrefs="z113"></relationship>
         <relationship name="settings" type="1/1" destination="SETTINGS" idrefs="z102"></relationship>
         <relationship name="uisettings" type="1/1" destination="UISETTINGS" idrefs="z104"></relationship>
         <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z113 z118 z110 z119 z105 z109 z106 z120 z111 z112 z107"></relationship>
@@ -88,7 +88,7 @@
         <attribute name="showlogwarningitems" type="bool">0</attribute>
         <attribute name="showloginfoitems" type="bool">0</attribute>
         <attribute name="showlogerroritems" type="bool">1</attribute>
-        <attribute name="pdfviewscrollrect" type="string">{{0, 10652.135881104397}, {604, 577.71125264738112}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 8360.3099788280124}, {604, 577.71125264548755}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -126,8 +126,8 @@
         <relationship name="children" type="0/0" destination="PROJECTITEM" idrefs="z113 z118 z110 z119 z105 z109 z112 z120 z111"></relationship>
     </object>
     <object type="TEXFILE" id="z107">
-        <attribute name="visiblerect" type="string">{{0, 1311}, {626, 772}}</attribute>
-        <attribute name="cursor" type="string">{2509, 0}</attribute>
+        <attribute name="visiblerect" type="string">{{0, 0}, {632, 772}}</attribute>
+        <attribute name="cursor" type="string">{11564, 0}</attribute>
         <attribute name="wasopen" type="bool">1</attribute>
         <attribute name="lasteditdate" type="date">424517098.46529698371887207031</attribute>
         <attribute name="istext" type="bool">1</attribute>
@@ -182,7 +182,7 @@
     <object type="TEXFILE" id="z111">
         <attribute name="visiblerect" type="string">{{0, 4181}, {626, 772}}</attribute>
         <attribute name="cursor" type="string">{10915, 0}</attribute>
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">-1</attribute>
         <attribute name="lasteditdate" type="date">424648234.17082601785659790039</attribute>
         <attribute name="istext" type="bool">1</attribute>
         <attribute name="fileloaddate" type="date">424648234.65615797042846679688</attribute>
@@ -216,13 +216,13 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z113">
-        <attribute name="wasopen" type="bool">-1</attribute>
-        <attribute name="visiblerect" type="string">{{0, 4465}, {641, 680}}</attribute>
-        <attribute name="lasteditdate" type="date">424456195.66965997219085693359</attribute>
+        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="visiblerect" type="string">{{0, 4723}, {626, 772}}</attribute>
+        <attribute name="lasteditdate" type="date">424650717.22919100522994995117</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">424515618.41141700744628906250</attribute>
+        <attribute name="fileloaddate" type="date">424650718.75879901647567749023</attribute>
         <attribute name="extension" type="string">tex</attribute>
-        <attribute name="cursor" type="string">{10312, 0}</attribute>
+        <attribute name="cursor" type="string">{10937, 0}</attribute>
         <attribute name="sortindex" type="int32">6</attribute>
         <attribute name="name" type="string">4toky.tex</attribute>
         <attribute name="isexpanded" type="bool">0</attribute>

@@ -53,10 +53,11 @@
 \end{t_definition}
 
 \begin{t_definition}
-  Pro srozumitelnost zápisu zavedeme následující označení pro množinu vrcholů $X\subseteq V$ v síti $(V, E, s, t, c)$:
+  Pro srozumitelnost zápisu zavedeme následující označení pro množiny vrcholů $X\subseteq V$ a $Y\subseteq V$ v síti $(V, E, s, t, c)$:
   \begin{enumerate}
     \item $X^+=\{(u,v)\in E\mid u\notin X, v\in X\}$ \textit{množina hran vedoucích do vrcholů v $X$},
-    \item $X^-=\{(u,v)\in E\mid u\in X, v\notin X\}$ \textit{množina hran vedoucích z vrcholů v $X$}.
+    \item $X^-=\{(u,v)\in E\mid u\in X, v\notin X\}$ \textit{množina hran vedoucích z vrcholů v $X$},
+    \item $E(X,Y)=\{(u,v)\in E\mid u\in X, v\in Y\}$ \textit{množina hran vedoucích z vrcholů $X$ do $Y$}.
   \end{enumerate}
 \end{t_definition}
 
@@ -77,6 +78,22 @@
 \end{t_fact}
 
 \begin{t_definition}
+  Řez $C$ v síti $(V, E, s, t, c)$ je elementární, pokud existuje množina vrcholů $A\subseteq V$ taková, že $s\in A,t\notin A$ a $C=E(A,V\setminus A)$.
+\end{t_definition}
+
+\begin{t_lemma}[o elementárním řezu]
+  V síti $(V, E, s, t, c)$ každý řez $C$ obsahuje jako podmnožinu elementární řez $A$.
+\end{t_lemma}
+
+\begin{t_proof}
+  chybí. % todo
+\end{t_proof}
+
+\begin{t_corollary}
+  Řez je elementární, pokud je minimální v inkluzi.
+\end{t_corollary}
+
+\begin{t_definition}
   Pro tok $f$ a řez $C$ v síti $(V, E, s, t, c)$ definujeme:
   \begin{enumerate}
     \item \textit{Co do řezu přiteče:} $f^+(C)=\sum_{e\in C^+} f(e)$,
@@ -85,7 +102,7 @@
   \end{enumerate}
 \end{t_definition}
 
-\begin{t_lemma}
+\begin{t_lemma}[omezení toku řezem]
   Pro každý tok $f$ a řez $C$ v síti $(V, E, s, t, c)$ platí: $|f|=-f^\Delta(C)\leq|C|$.
 \end{t_lemma}
 
@@ -119,7 +136,7 @@
   \end{align*}
 \end{t_proof}
 
-\begin{t_theorem}[Fordova-Fulkersonova]
+\begin{t_theorem}[Fordova-Fulkersonova, minimaxová]
   V každé síti je velikost maximálního toku rovna kapacitě minimálního řezu.
 \end{t_theorem}
 
@@ -214,7 +231,6 @@
     \includegraphics[width=0.7\textwidth]{img/net2.png}
   \end{figure}
   
-  \newpage
   \item Najděte maximální tok z $v_1$ do $v_6$.
   \begin{figure}[!htbp]
     \centering
