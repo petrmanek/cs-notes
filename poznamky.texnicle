@@ -79,7 +79,7 @@
         <attribute name="name" type="string">poznamky</attribute>
         <attribute name="folder" type="string">/Users/petrmanek/Documents/MFF UK/Poznámky</attribute>
         <relationship name="mainfile" type="1/1" destination="FILE" idrefs="z107"></relationship>
-        <relationship name="selected" type="1/1" destination="FILE" idrefs="z113"></relationship>
+        <relationship name="selected" type="1/1" destination="FILE" idrefs="z112"></relationship>
         <relationship name="settings" type="1/1" destination="SETTINGS" idrefs="z102"></relationship>
         <relationship name="uisettings" type="1/1" destination="UISETTINGS" idrefs="z104"></relationship>
         <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z113 z118 z110 z119 z105 z109 z106 z120 z111 z112 z107"></relationship>
@@ -88,7 +88,7 @@
         <attribute name="showlogwarningitems" type="bool">0</attribute>
         <attribute name="showloginfoitems" type="bool">0</attribute>
         <attribute name="showlogerroritems" type="bool">1</attribute>
-        <attribute name="pdfviewscrollrect" type="string">{{0, 8360.3099788280124}, {604, 577.71125264548755}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 5368.5881104659275}, {604, 577.71125264317379}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -128,7 +128,7 @@
     <object type="TEXFILE" id="z107">
         <attribute name="visiblerect" type="string">{{0, 0}, {632, 772}}</attribute>
         <attribute name="cursor" type="string">{11564, 0}</attribute>
-        <attribute name="wasopen" type="bool">1</attribute>
+        <attribute name="wasopen" type="bool">2</attribute>
         <attribute name="lasteditdate" type="date">424517098.46529698371887207031</attribute>
         <attribute name="istext" type="bool">1</attribute>
         <attribute name="fileloaddate" type="date">424526221.73444300889968872070</attribute>
@@ -198,12 +198,12 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z112">
-        <attribute name="visiblerect" type="string">{{0, 4273}, {626, 772}}</attribute>
-        <attribute name="cursor" type="string">{8232, 0}</attribute>
-        <attribute name="wasopen" type="bool">-1</attribute>
-        <attribute name="lasteditdate" type="date">424516774.62635099887847900391</attribute>
+        <attribute name="visiblerect" type="string">{{0, 2227}, {626, 772}}</attribute>
+        <attribute name="cursor" type="string">{7974, 0}</attribute>
+        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="lasteditdate" type="date">424652956.48923498392105102539</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">424516774.88969397544860839844</attribute>
+        <attribute name="fileloaddate" type="date">424652956.88648599386215209961</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="sortindex" type="int32">7</attribute>
         <attribute name="name" type="string">5parovani.tex</attribute>
@@ -216,7 +216,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z113">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">1</attribute>
         <attribute name="visiblerect" type="string">{{0, 4723}, {626, 772}}</attribute>
         <attribute name="lasteditdate" type="date">424650717.22919100522994995117</attribute>
         <attribute name="istext" type="bool">1</attribute>

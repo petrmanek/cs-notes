@@ -79,9 +79,23 @@ Pojďme nyní prozkoumat souvislost párování a množinových systémů.
     \left|\bigcup_{L_i\in M} L_i\right|\geq |M|
   \end{align*}
   
-  Nyní dokažme implikaci obrácenou. Mějme množinový systém $(X,\mathcal{L})$, který splňuje Hallovu podmínku. Vezmeme incidenční graf množinového systému a prozkoumáme jeho přidruženou síť. Nechť bez újmy na obecnosti je v této síti zdrojovou partitou množina $\mathcal{L}$ a stokovou partitou množina $X$. V síti nalezneme maximální tok $f$ a minimální řez $C^\prime$.
+  Nyní dokažme implikaci obrácenou. Mějme množinový systém $(X,\mathcal{L})$, který splňuje Hallovu podmínku. Vezmeme incidenční graf množinového systému a prozkoumáme jeho přidruženou síť. Nechť bez újmy na obecnosti je v této síti zdrojovou partitou množina $\mathcal{L}$ a stokovou partitou množina $X$. V síti nalezneme maximální tok $f^\prime$ a minimální řez $C^\prime$.
   
-  ... \textit{(ukázat z řezu a Hallovy podmínky, že} $|f|=|\mathcal{L}|$) ... % todo
+  Hodilo by se nám, aby řez $C^\prime$ měl kapacitu $|\mathcal{L}|$. To ukážeme z Hallovy podmínky. Nejprve ale vyrobíme řez $C$ o stejné kapacitě rozpojením hran mezi partitami $X$ a $\mathcal{L}$.
+  \begin{align*}
+    C=\{(x,t)\mid (x,t)\in C^\prime,x\in X\}\cup\{(s,l)\mid (s,l)\in C^\prime,l\in\mathcal{L}\}\cup\{(s,l)\mid (l,x)\in C^\prime,l\in\mathcal{L},x\in X\}
+  \end{align*}
+  
+  V řezu $C$ označíme množiny $A=\{l\mid (s,l)\in C, l\in\mathcal{L}\}$, $B=\{l\mid (x,t)\in C, x\in X\}$ a $A^\prime=\mathcal{L}\setminus A$. Protože $C$ je řez, hrany z $A^\prime$ vedou jen do $B$, tedy
+  \begin{align*}
+    \bigcup_{L_i\in A^\prime}L_i\subseteq B
+  \end{align*}
+  Kapacita $|C^\prime|=|C|=|A|+|B|$, kde $A$ můžeme z definice vyjádřit jako $\mathcal{L}\setminus A^\prime$.
+  \begin{align*}
+    |C^\prime|=|\mathcal{L}|-|A^\prime|+|B|\geq |\mathcal{L}|-|A^\prime|+\left|\bigcup_{L_i\in A^\prime}L_i\right|
+  \end{align*}
+  
+  Nyní použijeme Hallovu podmínku, která říká $\left|\bigcup_{L_i\in M} L_i\right|\geq |M|$, kde za $M$ dosadíme $A^\prime$, a získáme $|C^\prime|\geq |\mathcal{L}|-|A^\prime|+|A^\prime|=|\mathcal{L}|$. Podle definice přidružené sítě je jednoduché nahlédnout, že zároveň platí $|C^\prime|\leq|\mathcal{L}|$ (systém $|\mathcal{L}|$ množin má nejvýše $|\mathcal{L}|$ různých reprezentantů). Tvrzení tedy můžeme spojit a získáme rovnost. Z Fordovy-Fulkersonovy věty plyne, že známe-li kapacitu minimálního řezu $C^\prime$, známe i velikost maximálního toku $f^\prime$. A protože jsou kapacity celočíselné, určitě existuje i celočíselný tok $f$ o stejné velikosti.
   
   Víme, že tok $f$ je celočíselný a má velikost $|\mathcal{L}|$. V incidenčním grafu tedy musí existovat párování velikosti $|\mathcal{L}|$. Systém různých reprezentantů získáme tak, že každé množině z $\mathcal{L}$ přiřadíme prvek z $X$, do kterého vede hrana s nenulovým tokem.
 \end{t_proof}
