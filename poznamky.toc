@@ -1,0 +1,4 @@
+\select@language {czech}
+\contentsline {chapter}{\IeC {\'U}vod}{v}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Kombinatorika}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Odhady}{2}{section.1.1}

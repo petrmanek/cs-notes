@@ -1,0 +1,160 @@
+\section{Grafová souvislost}
+\begin{t_definition}
+  V grafu $G=(V,E)$ je množina $F\subseteq E$ $st$-řezem (kde $s,t\in V$), pokud jsou v grafu $G-F$ vrcholy $s$ a $t$ v různých komponentách souvislosti. Obecně, množina $F^\prime\subseteq E$ je řezem, pokud existují $s,t\in V$ takové, že $F^\prime$ je $st$-řezem.
+\end{t_definition}
+
+\begin{t_definition}
+  V grafu $G=(V,E)$ je množina $W\subseteq V$ $st$-separátorem (kde $s,t\in V$ a $s,t\notin W$), pokud jsou v grafu $G-W$ vrcholy $s$ a $t$ v různých komponentách souvislosti. Obecně, množina $W^\prime\subseteq E$ je separátorem, pokud existují $s,t\in V$ takové, že $W^\prime$ je $st$-separátorem.
+\end{t_definition}
+
+\begin{t_definition}
+  Graf $G$ nazýváme $k$-hranově souvislý, pokud v něm neexistuje řez velikosti $k-1$ nebo menší. Podobně, $G$ označíme jako $k$-vrcholově souvislý, pokud v něm neexistuje separátor velikosti $k-1$ nebo menší a $G$ má alespoň $k+1$ vrcholů.
+\end{t_definition}
+
+\begin{t_remark}
+  Každý $k$-souvislý graf je i $(k-1)$-souvislý (hranově i vrcholově).
+\end{t_remark}
+
+\begin{t_definition}
+  Hranová souvislost grafu $G$, označena $k_e(G)$, je největší $k$ takové, že $G$ je $k$-hranově souvislý. Podobně, vrcholová souvislost $k_v(G)$ je největší $l$ takové, že $G$ je $l$-vrcholově souvislý.
+\end{t_definition}
+
+\begin{t_observation}
+  V každém grafu $G$ existuje řez velikosti $k_e(G)$ a separátor velikosti $k_v(G)$. Z definice vyplývá, že tyto množiny jsou minimálními možnými.
+\end{t_observation}
+
+\begin{t_theorem}[Mengerova, lokální hranová orientovaná]
+  Buď $G=(V,E)$ orientovaný graf a $s, t\in V$ nějaké jeho vrcholy. Pak je velikost minimálního $st$-řezu rovna počtu navzájem hranově disjunktních cest z $s$ do $t$.
+\end{t_theorem}
+
+\begin{t_proof}
+  Z grafu sestrojíme síť takovou, že $s$ bude zdroj, $t$ bude stok a všem hranám nastavíme kapacitu na jednotku. Řezy v této síti odpovídají řezům v původním grafu. Nyní aplikujeme Fordovu-Fulkersonovu větu na minimální $st$-řez a získáme maximální tok $f$ o stejné velikosti.
+  
+  Pozorujeme, že každý systém hranově disjunktních cest z $s$ do $t$ odpovídá toku stejné velikosti a naopak ke každému celočíselnému toku dovedeme najít systém disjunktních cest (hladově tok rozkládáme na cesty a průběžně odstraňujeme hrany s nulovým tokem, které objevíme). Tento proces aplikujeme na $f$ a získáme hledané cesty.
+\end{t_proof}
+
+\begin{t_theorem}[Mengerova, lokální vrcholová orientovaná]
+  Buď $G=(V,E)$ orientovaný graf a $s, t\in V$ nějaké jeho vrcholy takové, že $(s,t)\notin E$. Pak je velikost minimálního $st$-separátoru rovna maximálnímu počtu cest z $s$ do $t$, které jsou vrcholově disjunktní až na krajní body.
+\end{t_theorem}
+
+\begin{t_proof}
+  Podobně jako v předchozím důkazu zkonstruujeme vhodnou síť. Tentokrát ovšem rozdělíme každý vrchol $v\in V$ na vrcholy $v^+$ a $v^-$. Všechny hrany, které původně vedly do $v$ přepojíme do $v^+$ a hrany vedoucí z $v$ povedou z $v^-$. Navíc přidáme novou hranu z $v^+$ do $v^-$. Všechny hrany budou mít jednotkové kapacity.
+  
+  Toky v takto utvořené síti nyní odpovídají vrcholově disjunktním cestám, řezy v síti odpovídají $st$-separátorům. Analogicky k minulému důkazu najdeme k minimálnímu separátoru maximální tok, ten převedeme na hledané cesty a důkaz je hotov.
+\end{t_proof}
+
+\begin{t_corollary}[Mengerova věta, globální hranová neorientovaná]
+  Neorientovaný graf $G$ je hranově $k$-souvislý právě tehdy, když mezi každými dvěma vrcholy existuje alespoň $k$ hranově disjunktních cest.
+\end{t_corollary}
+
+\begin{t_corollary}[Mengerova věta, globální vrcholová neorientovaná]
+  Neorientovaný graf $G$ je vrcholově $k$-souvislý právě tehdy, když mezi každými dvěma vrcholy existuje alespoň $k$ vrcholově disjunktních cest až na krajní body.
+\end{t_corollary}
+
+\begin{t_definition}
+  V grafu $G=(V,E)$ označíme:
+  \begin{itemize}
+    \item \textit{Minimální stupeň} $\delta(G)=\min_{v\in V}\{\deg_G v\}$,
+    \item \textit{Maximální stupeň} $\Delta(G)=\max_{v\in V}\{\deg_G v\}$.
+  \end{itemize}
+\end{t_definition}
+
+\begin{t_theorem}
+  V každém grafu $G=(V,E)$, kde $e\in E$, platí: $k_v(G)-1\leq k_v(G-e)\leq k_v(G)$.
+\end{t_theorem}
+
+\begin{t_proof}
+  chybí % todo
+\end{t_proof}
+
+\begin{t_corollary}
+  V každém grafu $G=(V,E)$ platí: $k_v(G)\leq k_e(G)\leq \delta(G)$.
+\end{t_corollary}
+
+\begin{t_lemma}
+  Nechť $G=(V,E)$ je graf, potom platí:
+  \begin{align*}
+    \frac{\Delta(G)}{2}\cdot k_v(G) \geq k_e(G)
+  \end{align*}
+\end{t_lemma}
+
+\begin{t_proof}
+  chybí % todo
+\end{t_proof}
+
+\begin{t_definition}
+  Nechť $G=(V,E)$ je graf. Cesta $P\subseteq G$ je ucho, pokud její vnitřní vrcholy nesousedí s žádným jiným vrcholem v $G$.
+\end{t_definition}
+
+\begin{t_lemma}[ušaté]
+  Každý 2-vrcholově souvislý graf může být vytvořen z cyklu postupným přidáváním uší.
+\end{t_lemma}
+
+\begin{t_proof}
+  Protože $G=(V,E)$ je 2-vrcholově souvislý, platí $\delta(G)\geq 2$ a tedy v $G$ musí existovat cyklus, označme jej $C$. Indukcí ukážeme pro $n\leq|E|$, že existuje podgraf $H\subseteq G$ na alespoň $n$ hranách takový, že jej můžeme vytvořit postupným přidáváním uší k $C$.
+  \begin{enumerate}
+    \item[(0)] Pro $n=0$ je hledaným grafem $C$.
+    \item[(1)] Podle indukčního předpokladu existuje podgraf $H=(V^\prime,E^\prime)\subseteq G$ na alespoň $n-1$ hranách s požadovanou vlastností. Pokud $|E^\prime|\geq n$, jsme hotovi. Předpokládejme tedy, že $H$ má právě $n-1$ hran.
+    
+    Pokud existuje hrana $e=(x,y)\in E\setminus E^\prime$ taková, že $x,y\in V^\prime$, vytvoříme graf $H+e$ na $n$ hranách. Protože jednotlivá hrana splňuje definici ucha, je $H+e$ grafem s požadovanou vlastností.
+    
+    Pokud taková hrana neexistuje, je $H$ indukovaným podgrafem $G$, takže množina $X=\{(x,y)\mid x\in V^\prime, y\in V\setminus V^\prime\}$ tvoří řez v $G$ (protože $|V^\prime|\geq n$). Zvolíme libovolnou hranu $e\in X$. Protože $G$ je 2-vrcholově souvislý, musí podle Mengerovy věty v $G$ existovat další cesta $P$ mezi krajními vrcholy $e$. Spojíme hranu s cestou a vytvoříme množinu $W=P+e$. Nahlédneme, že $W$ je ucho délky alespoň 1. Graf $H+W$ tedy splňuje požadovanou vlastnost.
+  \end{enumerate}
+\end{t_proof}
+
+\begin{t_definition}
+  Počet koster grafu $G$ označíme $\kappa(G)$.
+\end{t_definition}
+
+\begin{t_theorem}
+  Pokud je graf $G=(V,E)$ 2-vrcholově souvislý, potom $\kappa(G)\geq |V|$.
+\end{t_theorem}
+
+\begin{t_proof}
+  chybí % todo
+\end{t_proof}
+
+\begin{t_theorem}[Cayleyova formule]
+  Pro úplný graf $K_n$ na $n$ vrcholech platí: $\kappa(K_n)=n^{n-2}$.
+\end{t_theorem}
+
+\begin{t_proof}
+  Uvažme množinu všech posloupností čísel $\{1,2,\dots n\}$ délky $n-2$. Je jednoduché nahlédnout, že takových posloupností je $n^{n-2}$. Nyní najdeme bijekci mezi těmito posloupnostmi a kostrami grafu $K_n$.
+  
+  Pro převedení kostry $T\subseteq K_n$ na posloupnost použijeme následující algoritmus:
+  \begin{enumerate}
+    \item Z množiny vrcholů stupně 1 vybereme vrchol $v$ s nejnižším číslem. Vrchol $v$ odebereme z $T$ a zapíšeme do posloupnosti číslo jeho jediného souseda.
+    \item Získali jsme nový, o jeden vrchol menší graf. Na něm budeme stejný postup opakovat, dokud nám nezbyde graf na jednom vrcholu.
+  \end{enumerate}
+  
+  Tímto způsobem získáme posloupnost délky $n-1$. Víme, že poslední prvek bude vždy číslo $n$, protože i kdyby na začátku $\deg_T n=1$, ve stromě bude vždy ještě alespoň jeden další vrchol stupně 1 s nižším číslem. Z tohoto důvodu můžeme poslední prvek posloupnosti vynechat a zkrátit ji tak na délku $n-2$, což je přesně posloupnost, do které jsme chtěli kostru převést.
+  
+  Pojďme nyní ukázat, že zobrazení, které výše uvedeným způsobem přiřadí kostře posloupnost, je opravdu bijekcí. Pozorujeme, že žádný z vrcholů stupně 1 se v posloupnosti neobjeví. Obecněji, každý vrchol $v$ se v posloupnosti vyskytne právě $(\deg_T v-1)$-krát. To nám dává návod, jak z posloupnosti zrekonstruujeme původní graf $T$.
+  \begin{enumerate}
+    \item Najdeme vrchol s nejnižším číslem, které se v posloupnosti nevyskytuje, a připojíme ho hranou k vrcholu určenému prvním číslem v posloupnosti.
+    \item Odebereme první číslo z posloupnosti, čímž získáme menší posloupnost. Na ní budeme opakovat stejný postup, dokud nevyčerpáme celou posloupnost.
+    \item Vrchol určený posledním číslem v posloupnosti připojíme k vrcholu $n$.
+  \end{enumerate}
+  
+  Je vidět, že každou posloupnost umíme převést zpět na graf a naše zobrazení je tedy určitě na. Protože jsme navíc při obou procesech měli každý krok určen jednoznačně (když bylo více vrcholů, volili jsme ten menší), je zobrazení prosté, čili máme bijekci.
+\end{t_proof}
+
+\begin{t_remark}
+  Výše popsaná bijekce se nazývá Prüferova posloupnost.
+\end{t_remark}
+
+\begin{t_theorem}
+  Pokud graf $G=(V,E)$ neobsahuje trojúhelník, potom $|E|\leq \frac{|V|^2}{4}$.
+\end{t_theorem}
+
+\begin{t_proof}
+  chybí % todo
+\end{t_proof}
+
+\begin{t_theorem}
+  Pokud graf $G=(V,E)$ neobsahuje 4-cyklus, potom $|E|\leq \frac{\sqrt{2}}{2}|V|^\frac{3}{2}$.
+\end{t_theorem}
+
+\begin{t_proof}
+  chybí % todo
+\end{t_proof}

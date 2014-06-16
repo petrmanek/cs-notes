@@ -1,0 +1,142 @@
+\section{Vytvořující funkce}
+\begin{t_definition}
+  Vytvořující funkce posloupnosti $\{a_n\}_{n=0}^\infty$ je funkce $A:\mathbb{R}\rightarrow\mathbb{R}$ definovaná $A(x)=a_0+a_1x+a_2x^2+a_3x^3+\dots=\sum_{i\geq 0}a_ix^i$.
+\end{t_definition}
+
+\begin{t_example}
+  Jak spočítáme všechna binární slova, tedy řetězce složené pouze z jedniček a nul? Řetězců délky $k$ je $2^k$, protože každé z $k$ míst můžeme zaplnit právě jednou ze 2 možností, jedničkou nebo nulou. Pokud počet řetězců délky $k$ označíme jako  $a_k=2^k$, získáme rostoucí geometrickou posloupnost $1,2,4,8,16,\dots$.
+  
+  Vytvořující funkce této posloupnosti bude $A(x)=1+2x+4x^2+8x^3+16x^4+\dots$. Pro $|x|<1$ tato řada konverguje k hodnotě $\frac{1}{1-2x}$. Tento předpoklad pro argument vytvořující funkce budeme používat i nadále. Můžeme tedy psát $A(x)=\frac{1}{1-2x}$.
+\end{t_example}
+
+\begin{t_observation}
+  Posloupnost $a_n=1$ má vytvořující funkci $A(x)=\frac{1}{1-x}$. Obecněji, posloupnost $b_n=q^n$ ($q\in\mathbb{R}$) má vytvořující funkci $B(x)=\frac{1}{1-qx}$.
+\end{t_observation}
+
+\begin{t_fact}
+  Pro každou posloupnost existuje vytvořující funkce. Posloupnost je touto vytvořující funkcí jednoznačně určena (až na ekvivalentní úpravy).
+\end{t_fact}
+
+\begin{t_example}[řešení lineární rekurence]$ $\\
+  Mějme posloupnost $\{a_n\}_{n=0}^\infty$ zadanou rekurentně, naším úkolem je najít explicitní vzorec.
+  \begin{align*}
+    a_n =
+    \begin{cases}
+      2 & n = 0 \\
+      5 & n = 1 \\
+      5a_{n+1}-6a_n & n\geq 2
+    \end{cases}
+  \end{align*}
+  
+  Předpokládejme, že $a_n$ má vytvořující funkci $A(x)=a_0+a_1x+a_2x^2+a_3x^3+\dots$. Podle výše zadaného rekurentního vztahu musí platit následující rovnice.
+  \begin{align*}
+    0=a_{n+2}-5a_{n+1}+6a_n
+  \end{align*}
+  
+  Pokusíme se tohoto vztahu využít pro získání tvaru vytvořující funkce $A(x)$. Podle ní potom určíme explicitní vzorec pro $n$-tý člen. Pojďme nyní funkci $A(x)$ vynásobit a sečíst.
+  \begin{align*}
+    A(x) &= a_0+a_1x+a_2x^2+a_3x^3+\dots\\
+    -5xA(x) &= -5a_0x-5a_1x^2-5a_2x^3-5a_3x^4+\dots\\
+    6x^2A(x) &= 6a_0x^2+6a_1x^3+6a_2x^4+6a_3x^5+\dots\\
+    (1-5x+6x^2)A(x) &= a_0+(a_1-5a_0)x+\underbrace{(a_2-5a_1+6a_0)}_{=0}x^2+\underbrace{(a_3-5a_2+6a_1)}_{=0}x^3+\dots
+  \end{align*}
+  
+  Díky tomu, jak se nám podařilo funkci povytýkat a sečíst, můžeme aplikovat rekurentní rovnici, která od kvadratického členu dále vynuluje koeficienty. Tímto způsobem se vcelku elegantně zbavíme nekonečně mnoha neznámých a zbyde nám vzorec omezený na počáteční body rekurence, ze kterého vytvořující funkci snadno vyjádříme.
+  \begin{align*}
+    (1-5x+6x^2)A(x) &= a_0+(a_1-5a_0)x\\
+    (1-5x+6x^2)A(x) &= 2-5x\\
+    A(x) &= \frac{2-5x}{1-5x+6x^2}
+  \end{align*}
+  
+  Máme tedy vytvořující funkci. Co nám to ale říká o posloupnosti? Jak uvidíme dále, z vytvořující funkce můžeme bez větší námahy získat explicitní vzorec pro posloupnost, za předpokladu, že známe vytvořující funkce nejčastějších posloupností a umíme na ně složitější výrazy rozložit. V tomto konkrétním případě použijeme úpravu na parciální zlomky.
+  \begin{align*}
+    A(x) &= \frac{2-5x}{1-5x+6x^2}\\
+    A(x) &= \frac{2-5x}{(1-2x)(1-3x)}\\
+    A(x) &= \underbrace{\frac{1}{1-2x}}_{2^n}+\underbrace{\frac{1}{1-3x}}_{3^n}
+  \end{align*}
+  
+  V tomto tvaru vypadá vytvořující funkce mnohem jednodušeji a je také lépe identifikovatelná. Pokud využijeme pozorování o geometrických posloupnostech a jejich vytvořujících funkcích, zjistíme, že levý zlomek je vytvořující funkcí posloupnosti $2^n$ a pravý zlomek je vytvořující funkcí posloupnosti $3^n$. Díky linearitě vytvořujících funkcí, kterou brzy podrobněji rozebereme, můžeme tedy náš výpočet uzavřít a určit explicitní vzorec pro posloupnost $a_n$.
+  \begin{align*}
+    A(x) &= \sum_{i\geq 0}(2^i+3^i)x^i\\
+    a_n&=2^n+3^n
+  \end{align*}
+\end{t_example}
+
+\begin{t_fact}[časté vytvořující funkce]
+  Nechť $\{a_n\}_{n=0}^\infty$, $\{b_n\}_{n=0}^\infty$ jsou posloupnosti, $A(x)$, $B(x)$ jejich odpovídající vytvořující funkce a $\alpha\in\mathbb{R}$, potom platí:
+  \begin{enumerate}
+    \item $A(x)+B(x)$ je vytvořující funkce posloupnosti $a_n+b_n$.
+    \item $A(\alpha x)$ je vytvořující funkce posloupnosti $\alpha^n\cdot a_n$.
+    \item $\alpha A(x)$ je vytvořující funkce posloupnosti $\alpha\cdot a_n$.
+    \item $x\cdot A^\prime(x)$ je vytvořující funkce posloupnosti $n\cdot a_n$.
+  \end{enumerate}   
+ \end{t_fact}
+ 
+\begin{t_fact}[vytvořující funkce a posun posloupnosti]
+  Nechť $\{a_n\}_{n=0}^\infty$ je posloupnost, $A(x)$ její vytvořující funkce a $k \in\mathbb{N}$, potom platí:
+  \begin{enumerate}
+    \item $x^k\cdot A(x)$ je vytvořující funkce posloupnosti $\underbrace{0, 0, 0, 0, 0, 0}_{k}, a_0, a_1, a_2\dots$.
+    \item $A(x^k)$ je vytvořující funkce posloupnosti $a_0, \underbrace{0, 0, 0, 0}_{k}, a_1, \underbrace{0, 0, 0, 0}_{k}, a_2,\dots$.
+  \end{enumerate}
+\end{t_fact}
+
+\begin{t_definition}[zobecněné kombinační číslo]
+  Pro $r\in\mathbb{R}$, $k\in\mathbb{Z}$ a $k\geq 0$ definujeme zobecněné kombinační číslo $\binom{r}{k}=\frac{r(r-1)(r-2)\dots (r-k+1)}{k!}$.
+\end{t_definition}
+
+\begin{t_lemma}
+  Nechť $n,k\in\mathbb{N}$, potom platí:
+  \begin{align*}
+    \binom{-n}{k}=(-1)^k\binom{n+k-1}{n-1}
+  \end{align*}
+\end{t_lemma}
+
+\begin{t_proof}[Důkaz (přímočarý)]
+  \begin{align*}
+    \binom{-n}{k}&=\frac{(-n)(-n-1)\dots(-n-k+1)}{k!}=
+    (-1)^k\frac{n(n+1)\dots(n+k-1)}{k!}=\\
+    &=(-1)^k\frac{(n+k-1)!}{k!(n-1)!}=(-1)^k\binom{n+k-1}{n-1}
+  \end{align*}
+\end{t_proof}
+
+\begin{t_fact}[zobecněná binomická věta]
+  Nechť $r\in\mathbb{R}$, potom $\forall x :|x|<1$ platí:
+  \begin{align*}
+    (1+x)^r=\sum_{k\geq 0}\binom{r}{k}x^k
+  \end{align*}
+\end{t_fact}
+
+\begin{t_example}
+  Zjistíme vytvořující funkci posloupnosti $a_n=\frac{1}{(1-n)^3}$.
+  \begin{align*}
+    \frac{1}{(1-x)^3}=(1-x)^{-3}
+    =\sum_{k\geq 0}\binom{-3}{k}(-x)^k
+    =\sum_{k\geq 0}\binom{-3}{k}x^k(-1)^k
+  \end{align*}
+  
+  Nejprve si posloupnost zapíšeme jako jmenovatel se záporným exponentem, poté využijeme zobecněnou binomickou větu, abychom výraz převedli na mocninnou řadu.
+  \begin{align*}
+    \sum_{k\geq 0}\binom{-3}{k}x^k(-1)^k
+    =\sum_{k\geq 0}(-1)^k\binom{3+k-1}{2}x^k(-1)^k
+    =\sum_{k\geq 0}\binom{k+2}{2}x^k
+  \end{align*}
+  
+  Aplikujeme lemma, která nám umožní převést kombinační číslo do jednoduššího tvaru. Vytvořující funkce $A(x)$ posloupnosti $a_n$ je tedy definována následujícím výrazem. 
+  \begin{align*}
+    A(x)=\binom{k+2}{2}
+  \end{align*}
+\end{t_example}
+
+\begin{t_exercise}
+  \item Sečtěte řady $\sum_{k=0}^n \binom{n}{k}^2$, $\sum_{k=0}^n (-1)^k\binom{n}{k}^2$, $\sum_{k=0}^n k\binom{n}{k}$, $\sum_{k=0}^n k^2\binom{n}{k}^2$.
+  \item Určete hodnotu koeficientu u $x^{13}$ v $(x^2+x^3+x^4+\dots)^4$.
+  \item Určete hodnotu koeficientu u $x^4$ v $\sqrt[3]{1+x}$.
+  \item Určete hodnotu koeficientu u $x^5$ v $\frac{1}{(1-2x)^2}$.
+  \item Najděte vytvořující funkce pro posloupnosti $(1, 1, 1, 1, \dots)$, $(1, 2, 3, 4, \dots)$, $(2, 4, 6, 8, \dots)$.
+  \item Najděte vytvořující funkce pro posloupnosti $(1, 3, 5, 7, \dots)$, $(1, 0, 1, 0, \dots)$, $(1, -3, 5, -7, \dots)$.
+  \item Najděte explicitní vzorec pro posloupnost zadanou rekurentně: $a_0=2, a_1=3$ a $a_{n+2}+2a_{n+1}-3a_n=0$ pro $n\geq 2$.
+  \item Najděte explicitní vzorec pro posloupnost zadanou rekurentně: $a_0=1, a_1=1$ a $a_{n+2}-a_{n+1}-6a_n=0$ pro $n\geq 2$.
+  \item Najděte explicitní vzorec pro posloupnost zadanou rekurentně: $a_0=0, a_1=1$ a $a_{n+2}=4(a_{n+1}-a_n)$ pro $n\geq 2$.
+  \item Spočítejte všechny řetězce o délce $n$ sestavené pouze z nul a jedniček takové, že se žádné dva po sobě jdoucí znaky nejsou nuly. Odpověď vyjádřete formou rekurentní posloupnosti.
+  \item Najděte explicitní vzorec pro posloupnost z předchozí úlohy.
+\end{t_exercise}

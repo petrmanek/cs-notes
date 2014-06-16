@@ -1,0 +1,116 @@
+% PM template 2014
+\documentclass[11pt,a4paper]{book} % this document uses 'book' template
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage[czech]{babel} % we're Czech
+\usepackage{amsfonts,multirow,float,enumerate, amsmath,amssymb,amsthm,algorithm,algorithmicx,algpseudocode}
+
+% just some misc pdf magic
+\usepackage{ifpdf}
+\ifpdf
+    \usepackage[pdftex]{graphicx}   % to include graphics
+    \pdfcompresslevel=9 
+    \usepackage[pdftex,     % sets up hyperref to use pdftex driver
+            plainpages=false,   % allows page i and 1 to exist in the same document
+            breaklinks=true,    % link texts can be broken at the end of line
+            colorlinks=true,
+            pdfauthor=Petr Mánek
+           ]{hyperref} 
+    \usepackage{thumbpdf}
+\else 
+    \usepackage{graphicx}       % to include graphics
+    \usepackage{hyperref}       % to simplify the use of \href
+\fi 
+
+\usepackage{pgfplots,dot2texi,tikz} % we like charts
+\usetikzlibrary{shapes,arrows,hobby,backgrounds,calc,trees}
+\usepackage{caption,subfigure}
+
+\usepackage[margin=3cm]{geometry} % change page margins to 3cm
+
+% theorems and proofs
+\newenvironment{t_proof}[1][\proofname]{%
+  \begin{proof}[#1]$ $\par\nobreak\ignorespaces
+}{%
+  \end{proof}
+}
+
+\newtheorem{t_theorem}{Věta}[section]
+
+\newtheorem{t_lemma}[t_theorem]{Lemma}
+\newtheorem{t_claim}[t_theorem]{Tvrzení}
+\newtheorem{t_fact}[t_theorem]{Fakt}
+
+\newtheorem{t_corollary}{Důsledek}[t_theorem]
+\newtheorem{t_remark}{Poznámka}[t_theorem]
+
+\theoremstyle{definition}
+\newtheorem{t_definition}[t_theorem]{Definice}
+\newtheorem*{t_observation}{Pozorování}
+\newtheorem*{t_example}{Příklad}
+\newtheorem*{t_exercise2}{Příklady k procvičení}
+\newenvironment{t_exercise}{%
+  \begin{t_exercise2}$ $\par\nobreak\ignorespaces
+  \begin{enumerate}
+}{%
+  \end{enumerate}
+  \end{t_exercise2}
+}
+
+% document title stuff
+\usepackage{titling}
+\title{Informatické poznámky}
+\author{Petr Mánek}
+\date{\today}
+
+% algorithmic macro
+\algnewcommand\algorithmicto{\textbf{to}}\algrenewtext{For}[3]%  {\algorithmicfor\ $#1 \gets #2$ \algorithmicto\ $#3$ \algorithmicdo}
+
+% translation and numbering
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmus}
+\@addtoreset{algorithm}{section}
+\makeatother
+\renewcommand{\thealgorithm}{\thesection.\arabic{algorithm}}
+
+% header and footer
+\usepackage{fancyhdr}
+\renewcommand{\subsectionmark}[1]{%
+  \ifsubsectioninheader
+    \def\subsectiontitle{: #1}%
+  \else
+    \def\subsectiontitle{}%
+  \fi}
+\newif\ifsubsectioninheader
+\def\subsectiontitle{}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LE]{\small \theauthor}
+\fancyhead[RO]{\small \nouppercase{\rightmark\ifsubsectioninheader\subsectiontitle\fi}}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyheadoffset[RE,LO]{-0.5\textwidth}
+\pagestyle{fancy}
+
+\begin{document}
+% some other title stuff
+\frontmatter
+\maketitle
+
+%\tableofcontents
+%\chapter{Úvod}
+%To do...
+
+% the actual content begins here
+\mainmatter
+\chapter{Kombinatorika}
+\include{kombagra/0intro}
+\include{kombagra/1odhady}
+\include{kombagra/2vytvorky}
+\include{kombagra/3roviny}
+\include{kombagra/4toky}
+\include{kombagra/5parovani}
+\include{kombagra/6souvislost}
+
+
+\end{document}

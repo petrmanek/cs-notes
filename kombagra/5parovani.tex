@@ -1,0 +1,193 @@
+\section{Párování v bipartitních grafech}
+\begin{t_example}
+  Na začátek uvedeme motivační příklad. Jsme rozvrháři a snažíme se naplánovat přednášky na příští semestr. Máme konečnou množinu učitelů $U_1, U_2,\dots U_k$ a stejně velkou množinu předmětů $P_1, P_2,\dots P_k$. Jak už to ale bývá, ne každý učitel může (nebo chce) přednášet každý předmět, a tak nám každý učitel navíc dodá seznam přednášek, které mu můžeme přidělit.
+  
+  Celou situaci si můžeme hezky znázornit na bipartitním grafu, kde vrcholy jedné partity budou učitelé a v druhé budou předměty. Hranami spojíme každého učitele s předměty, které může vyučovat v příštím semestru. Z grafu chceme vybrat takový podgraf, že každý učitel je spojen s právě jedním předmětem.
+\end{t_example}
+
+\begin{t_definition}
+  Párování v bipartitním grafu $G=(A\cup B,E)$ je množina hran $X\subseteq E$ taková, že žádné dvě hrany v ní nemají společný vrchol. Párování je perfektní, pokud hrany v $X$ sousedí se všemi vrcholy $G$. Velikostí párování míníme počet hran v $X$.
+\end{t_definition}
+
+Perfektní párování můžeme hledat pomocí teorie toků. Provedeme to tak, že z bipartitního grafu zkontstruujeme síť, v ní najdeme maximální tok a ten převedeme na párování. Síť zkonstruujeme takto:
+\begin{enumerate}
+  \item Vrcholy jedné partity připojíme ke zdroji, vrcholy druhé partity připojíme ke stoku.
+  \item Zorientujeme hrany, aby šipky vedly od zdroje do připojené partity, z druhé připojené partity do stoku a ze zdojové partity do stokové partity.
+  \item Každé hraně přidělíme stejnou kapacitu velikosti 1.
+\end{enumerate}
+Nyní už stačí jen najít maximální tok (třeba s pomocí Fordova-Fulkersonova algoritmu) a vytvořit z něj párování. Dříve jsme dokázali, že jsou-li kapacity celočíselné, i maximální tok bude celočíselný. Protože jsou navíc kapacity velikosti 1, může mít každá hrana tok jen 0 nebo 1 – do našeho párování tedy zahrneme pouze ty hrany s tokem 1.
+
+Je triviální, že takto získané párování bude nejvýše maximální možné. Opačnou nerovnost získáme sporem. Pokud by nalezené párování bylo menší než maximální, musí existovat dvojice vrcholů, která šla spárovat. To také znamená, že mezi těmito vrcholy je nenulová rezerva, což je spor s maximalitou nalezeného toku. V důsledku tedy platí, že tímto způsobem nalezneme vždy maximální možné párování.
+
+\begin{t_definition}
+  Síť vytvořenou z bipartitního grafu $G$ budeme označovat jako síť přidruženou ke grafu $G$.
+\end{t_definition}
+
+\begin{t_claim}
+  Pokud je bipartitní graf $G$ $k$-regulární, kde $k\geq 1$, potom v něm existuje perfektní párování.
+\end{t_claim}
+
+\begin{t_proof}
+  Pozorujeme, že pokud je $G$ bipartitní a zároveň $k$-regulární, musí mít obě partity stejný počet vrcholů $n$. Chceme dokázat, že velikost maximálního toku v síti přidružené ke $G$ je rovna $n$.
+  
+  Vytvoříme tedy tok $f$ takový, že všechny hrany ze zdroje do partity nebo z partity do stoku budou mít tok 1 a všechny hrany mezi partitami budou mít tok $\frac{1}{n}$. Platí $|f|=n$, tento tok je tedy maximální možný (minimální řez je triviální). Jestliže existuje maximální tok velikosti $n$ na síti s celočíselnými kapacitami, existuje tok o stejné velikosti, který je celočíselný – z něj zkonstruujeme perfektní párování.
+\end{t_proof}
+
+Ukázali jsme si, jak najít perfektní párování. Co ale budeme dělat v případech, kdy takové párování neexistuje? Důkaz neexistence povedeme podle následujícího schématu.
+\begin{enumerate}
+  \item Vybereme podmnožinu $K$ vrcholů z partity $A$.
+  \item Najdeme množinu $N(K)$ vrcholů spojených s vrcholy v $K$.
+  \item Ukážeme, že $|K|\neq |N(K)|$, z čehož plyne, že perfektní párování nemůže existovat.
+\end{enumerate}
+
+\begin{t_definition}
+  Vrcholové pokrytí grafu $G=(V,E)$ je taková množina $W\subseteq V$, že každá hrana v $E$ je incidentní s alespoň jedním vrcholem z $W$.
+\end{t_definition}
+
+\begin{t_remark}
+  Triviální vrcholové pokrytí je množina všech vrcholů grafu. Často nás zajímá takzvané minimální vrcholové pokrytí, tedy vrcholové pokrytí s nejmenším možným počtem bodů. V bipartitním grafu o partitách velikosti $m$ a $n$ má minimální pokrytí velikost nejvýše $\min\{m,n\}$.
+\end{t_remark}
+
+\begin{t_theorem}[Königova]
+  V každém bipartitním grafu je velikost maximálního párování rovna velikosti velikosti minimálního vrcholového pokrytí.
+\end{t_theorem}
+
+\begin{t_proof}
+  Pokud je $W$ vrcholové pokrytí, musí hrany vedoucí mezi vrcholy této množiny, zdrojem a stokem tvořit stejně velký řez, protože každá $st$-cesta obsahuje alespoň jednu hranu bipartitního grafu a ta je pokryta. Analogicky, vezmeme-li libovolný $st$-řez (ne nutně tokový, stačí hranový), můžeme ho bez zvětšení upravit na $st$-řez, kterému přímočaře odpovídá vrcholové pokrytí stejné velikosti.
+\end{t_proof}
+
+Pojďme nyní prozkoumat souvislost párování a množinových systémů.
+
+\begin{t_definition}
+  Nechť $(X,\mathcal{L})$ je množinový systém, kde $\mathcal{L}=\{L_1,L_2,\dots L_k\}$. Množina $\{x_1,x_2,\dots x_k\}$ je systémem různých reprezentantů $(X,\mathcal{L})$, pokud pro každé $1\leq i\leq k$ platí $x_i\in L_i$.
+\end{t_definition}
+
+\begin{t_remark}
+  Problém hledání systému různých reprezentantů v množinovém systému můžeme převést na hledání párování velikosti $|\mathcal{L}|$ na incidenčním grafu množinového systému. Tuto myšlenku rozvedeme v důkazu následující věty.
+\end{t_remark}
+
+\begin{t_theorem}[Hallova]
+  Množinový systém $(X,\mathcal{L})$, kde $\mathcal{L}=\{L_1,L_2,\dots,L_k\}$, má systém různých reprezentantů, právě když pro každou $M\in 2^\mathcal{L}$ platí:
+  \begin{align*}
+    \left|\bigcup_{L_i\in M} L_i\right|\geq |M|
+  \end{align*}
+\end{t_theorem}
+
+\begin{t_proof}
+  Začneme jednodušší implikací, nechť v $(X,\mathcal{L})$ existuje systém různých reprezentantů $\{x_1,x_2,\dots x_k\}$. Chceme ukázat, že platí Hallova podmínka. Zvolíme libovolnou $M\in2^\mathcal{L}$. Pro každý prvek $L_i\in M$ existuje $x_i\in L_i$ takové, že všechna $x_i$ jsou navzájem různá. Proto:
+  \begin{align*}
+    \left|\bigcup_{L_i\in M} L_i\right|\geq |M|
+  \end{align*}
+  
+  Nyní dokažme implikaci obrácenou. Mějme množinový systém $(X,\mathcal{L})$, který splňuje Hallovu podmínku. Vezmeme incidenční graf množinového systému a prozkoumáme jeho přidruženou síť. Nechť bez újmy na obecnosti je v této síti zdrojovou partitou množina $\mathcal{L}$ a stokovou partitou množina $X$. V síti nalezneme maximální tok $f$ a minimální řez $C^\prime$.
+  
+  ... \textit{(ukázat z řezu a Hallovy podmínky, že} $|f|=|\mathcal{L}|$) ... % todo
+  
+  Víme, že tok $f$ je celočíselný a má velikost $|\mathcal{L}|$. V incidenčním grafu tedy musí existovat párování velikosti $|\mathcal{L}|$. Systém různých reprezentantů získáme tak, že každé množině z $\mathcal{L}$ přiřadíme prvek z $X$, do kterého vede hrana s nenulovým tokem.
+\end{t_proof}
+
+\begin{t_corollary}
+  Buď $G=(A\cup B,E)$ bipartitní graf s neprázdnou množinou hran $E$ takový, že pro libovolné dva vrcholy $a\in A$ a $b\in B$ platí $\deg_G a\geq \deg_G b$. Potom existuje párování, které má velikost $|A|$. 
+\end{t_corollary}
+
+\begin{t_proof}
+  Definujeme množinový systém $\mathcal{M}=(B,\{N(a)\mid a\in A\})$. Řečeno slovy, pro každý vrchol z partity $A$ vytvoříme množinu vrcholů z partity $B$, které s ním sousedí. Nyní ukážeme, že v $\mathcal{M}$ platí Hallova podmínka.
+  
+  Zvolme libovolnou množinu $X\in 2^A$ vrcholů z první partity, označme $N(X)=\bigcup_{x\in X}N(x)$ množinu všech vrcholů z $B$ sousedících s vrcholy v $X$. Hallova podmínka vyžaduje, aby platilo $|N(X)|\geq |X|$, což nyní ověříme. Označme proměnné $k_1=\min_{x\in X}\{\deg_G x\}$ a $k_2=\max_{x\in N(X)}\{\deg_G x\}$. Počet hran mezi $X$ a $N(X)$ je přinejmenším $k_1|X|$ a také nejvýše $k_2|N(X)|$, platí tedy $k_1|X|\leq k_2|N(X)|$. Protože $k_1$ a $k_2$ jsou stupně vrcholů, platí podle předpokladu věty $k_1\geq k_2$ a dostáváme $|X|\leq |N(X)|$.
+  
+  Množinový systém $\mathcal{M}$ tedy má podle Hallovy věty systém různých reprezentantů. Tedy pro každý vrchol $a\in A$ existuje $b\in B$ tak, že mezi nimi povede hrana a všechna $b$ budou navzájem různá. To je přesně definice párování, které má velikost $|A|$.
+\end{t_proof}
+
+\begin{t_remark}
+  Pokud hrany párování $X$ jsou sousedí se všemi vrcholy množiny $M$, také říkáme, že $X$ uspokojuje $M$.
+\end{t_remark}
+
+\begin{t_definition}
+  Latinský čtverec $A$ je čtvercová matice typu $n\times n$ taková, že platí:
+  \begin{enumerate}
+    \item $a_{ij}\in\{1,2\dots n\}$,
+    \item $a_{ij}\neq a_{i^\prime j}$ pro každé $i\neq i^\prime$,
+    \item $a_{ij}\neq a_{ij^\prime}$ pro každé $j\neq j^\prime$.
+  \end{enumerate}
+\end{t_definition}
+
+\begin{t_remark}
+  Česky řečeno, v latinském čtverci se vyskytují přirozená čísla od jedné do $n$ taková, že v každém řádku i sloupci nenajdeme dvě stejná čísla.
+\end{t_remark}
+
+\begin{t_definition}
+  Latinský obdélník $A$ je matice typu $k \times n$ splňující stejné podmínky jako latinský čtverec.
+\end{t_definition}
+
+\begin{t_claim}
+  Každý latinský obdélník, kde je počet řádků $k$ nižší než počet sloupců $n$, lze doplnit na latinský čtverec.
+\end{t_claim}
+
+\begin{t_proof}
+  K latinskému obdélníku budeme postupně přidávat řádky, dokud nedostaneme čtverec. Sestrojíme bipartitní graf $G=(S\cup H, E)$, kde $S=\{S_1, S_2, \dots S_n\}$ je množina sloupců latinského obdélníku ($\forall i:|S_i|=k$) a $H=\{1,2\dots n\}$ je množina hodnot, ze kterých konstruujeme nový řádek. Hrana v $G$ povede mezi $S_i\in S$ a $h\in H$, pokud se hodnota $h$ nevyskytuje ve sloupci $S_i$.
+  
+  Nyní chceme do nového řádku na $j$-tou pozici vybrat takovou hodnotu $h$, že se $h$ jednak nevyskytuje v sloupci $S_j$ a jednak všechny takto vybrané prvky $h$ jsou navzájem různé. To je však ekvivalentní s existencí systému různých reprezentantů na množinovém systému s incidenčním grafem $G$. Místo ověřování Hallovy podmínky se nám však tentokrát bude hodit využít předchozí tvrzení.
+  
+  Uvažme vrcholy v partitě $S$. V každém sloupci zadaného obdélníka chybí právě $n-k$ hodnot, platí tedy $\forall i:\deg_G S_i=n-k$. Naopak, každá hodnota chybí právě v $n-k$ sloupcích, platí tedy $\forall h\in H:\deg_G h=n-k$. Protože $n-k\leq n-k$, je podle předchozího tvrzení Hallova podmínka splněna a existuje párování v $G$ a tedy i hledaný systém různých reprezentantů.
+\end{t_proof}
+
+\begin{t_definition}
+  Dva latinské čtverce $A$ a $B$ řádu $n$ označíme jako ortogonální, pokud platí
+  $|\{(a_{ij},b_{ij})\mid 1\leq i,j \leq n\}|=n^2$.
+\end{t_definition}
+
+\begin{t_remark}
+  Předchozí definici si můžeme lépe představit tak, že vezmeme čtverce $A$, $B$ a překryjeme je přes sebe tak, že nám prvky na odpovídajících pozicích vytvoří uspořádané dvojice. Protože se v těchto dvojicích mohou na obou místech vyskytovat čísla od jedné do $n$, může jich být až $n^2$. Definice tedy vlastně říká, že se mezi těmito uspořádanými dvojicemi nesmí žádná opakovat vícekrát.
+\end{t_remark}
+
+\begin{t_theorem}
+  Nechť je $M$ množinou latinských čtverců řádu $n$, z nichž každé dva jsou nazvájem ortogonální. Potom $|M|\leq n-1$.
+\end{t_theorem}
+
+\begin{t_proof}
+  Začneme pozorováním. Mějme $A, B$ ortogonální latinské čtverce řádu $n$ a $\pi$ permutaci čísel $\{1, 2,\dots n\}$. Utvoříme nový latinský čtverec $A^\prime$ tak, že $a^\prime_{ij}=\pi(a_{ij})$. Z definice ortogonality není těžké nahlédnout, že potom i $A^\prime$ a $B$ budou ortogonální latinské čtverce.
+  
+  Nechť $A_1,A_2,\dots A_t$ jsou latinské čtverce řádu $n$, z nichž každé dva jsou ortogonální. Pro každé $A_i$ zvolíme tu permutaci čísel $\{1,2,\dots n\}$, jejíž aplikací na $A_i$ docílíme toho, že v první řádce budou stát čísla $1,2,\dots n$ v pořadí podle velikosti. Výsledný čtverec označíme $A^\prime_i$. Podle uvedeného pozorování budou $A^\prime_1,\dots A^\prime_t$ stále po dvou ortogonální. Podívejme se nyní, jaká čísla mohou stát v prvním políčku druhé řádky těchto čtverců. Především tam nemůže být číslo 1, protože to už je v prvním sloupci použito. Dále, žádné dva čtverce $A^\prime_i, A^\prime_j$ nemůžou mít na uvažované pozici stejná čísla. Kdyby totiž měly, položením čtverců přes sebe vznikne dvojice stejných čísel, řekněme $(k,k)$, ale tato dvojice také vznikne na $k$-tém místě prvního řádku! Tedy každé z čísel $2,3,\dots n$ může na pozici $a_{21}$ stát jen v jednom $A^\prime_i$, a proto $t\leq n-1$.
+\end{t_proof}
+
+\begin{t_theorem}
+  Pro $n\geq 2$, konečná projektivní rovina řádu $n$ existuje právě když existuje soubor $n-1$ po dvou ortogonálních latinských čtverců řádu $n$.
+\end{t_theorem}
+
+\begin{t_proof}[Myšlenka důkazu]
+  Máme dáno $n-1$ ortogonálních latinských čtverců $L_1,L_2\dots L_{n-1}$ řádu $n$. Zvolíme dva body projektivní roviny $r$ a $s$, přímku $B$, která je spojuje, a zbývající body na přímce $B$ označíme $l_1,\dots l_{n-1}$. Potom nazveme $R_1\dots R_n$ zbývající přímky procházející bodem $r$, a $S_1,\dots S_n$ zbývající přímky procházející bodem $s$ (mimo $B$).
+  
+  Nyní každý z dosud neoznačených bodů je průsečíkem některé dvojice přímek $R_i$ a $S_j$. Body konstruované projektivní roviny mimo bodů $r, s, l_1,\dots l_{n-1}$ máme sestaveny do čtverce $n\times n$; pozice bodu v tomto čtverci bude odpovídat pozici políčka v latinském čtverci. Například pole $a_{32}$ bude odpovídat průsečíku $R_3$ a $S_2$.
+  
+  To, co jsme dosud označili a zakreslili, musí být stejné v každé projektivní rovině řádu $n$. Nyní podle latinských čtverců doplníme přímky procházející body $l_1\dots l_{n-1}$. Jak označení napovídá, přímky procházející bodem $l_i$ budou určeny čtvercem $L_i$. Přímky bodem $l_i$ budou odpovídat jednotlivým číslům (symbolům) v latinském čtverci $L_i$. Například přímka odpovídající číslu 1 bude protínat bod $l_1$ a všechny průsečíky $R_i$ a $S_j$ odpovídající polím $a_{ij}$ ve čtverci $L_1$ takovým, že $a_{ij}=1$. Pro ostatní čísla postupujeme analogicky.
+  
+  Tím jsme popsali konstrukci konečné projektivní roviny, zbývá ověřit axiomy. Snadno spočteme, že celkový počet bodů i přímek je $n^2+n+1$. Stačí ověřit, že každé 2 přímky se protínají nejvýš v 1 bodě. Přitom se využije toho, že každý $L_i$ je latinský čtverec a každé 2 z použitých čtverců jsou ortogonální.
+  
+  Obrácený postup, konstrukce $n-1$ po dvou ortogonálních latinských čtverců z projektivní roviny, sleduje totéž schéma. V projektivní rovině libovolně zvolíme body $r, s$ a zafixujeme další označení. Potom $i$-tý latinský čtverec vyplníme podle přímek procházejících bodem $l_i$.
+\end{t_proof}
+
+\begin{t_exercise}
+  \item Uvažujme systém všech $(n-1)$-prvkových podmnožin množiny $\{1, 2\dots n\}$. Kolik má systémů různých reprezentantů?
+  \item Dokažte, že systém všech podmnožin velikosti $(n-2)$ množiny $\{1,2\dots n\}$ má systém různých reprezentantů.
+  \item Určete, zda pro množinový systém $(X,\mathcal{L})$ existuje systém různých reprezentantů:\\
+  $X=\{a,b,c,d\}$, $\mathcal{L}=\{\{a,b,d\}, \{a,c\}, \{b,c\}, \{b,d\}\}$
+  \item Určete, zda pro množinový systém $(X,\mathcal{L})$ existuje systém různých reprezentantů:\\
+  $X=\{a,b,c\}$, $\mathcal{L}=\{\{a,c\}, \{a,c\}, \{b,c\}, \{a,b\}\}$
+  \item Určete, zda pro množinový systém $(X,\mathcal{L})$ existuje systém různých reprezentantů:\\
+  $X=\{a,b,c,d,e,f\}$, $\mathcal{L}=\{\{a,b\}, \{a,e\}, \{b,c\}, \{a,b,d\}, \{a,c\}, \{b,e,f\}, \{a,b,c\}\}$
+  \item Dokažte, že množinový systém sestávající z přímek konečné projektivní roviny má vždy systém různých reprezentantů.
+  \item Existují 3 navzájem ortogonální latinské čtverce řádu 5? Pokud si myslíte že ano, zkuste je sestrojit, pokud ne, zdůvodněte proč.
+  \item Doplňte následující tabulku na latinský čtverec nebo dokažte, že to nejde.
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline
+      1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+        &   &   &   &   &   \\ \hline
+      6 & 3 & 5 & 1 & 2 & 4 \\ \hline
+        &   &   &   &   &   \\ \hline
+        &   &   &   &   &   \\ \hline
+      2 & 1 & 6 & 5 & 4 & 3 \\ \hline
+    \end{tabular}
+  \end{table}
+\end{t_exercise}

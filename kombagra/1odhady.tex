@@ -1,0 +1,115 @@
+\section{Kombinatorické odhady}
+V této části se budeme zabývat odhady veličin často používaných při řešení kombinatorických problémů. Na začátek ale zadefinujeme dva klíčové pojmy, bez kterých se neobejdeme.
+
+\begin{t_definition}
+  Pro $n\in\mathbb{N}$ definujeme faktoriál jako $n!=1\cdot 2\cdot 3\dots n$. Speciálně, nechť je $0!$ roven 1.
+\end{t_definition}
+
+\begin{t_definition}
+  Pro $n,k\in\mathbb{N}, k\leq n$ definujeme kombinační číslo $\binom{n}{k}=\frac{n!}{k!(n-k)!}$. Kombinačnímu číslu $\binom{n}{k}$ také říkáme binomický koeficient, ve výrazech jej čteme \textit{$n$ nad $k$}.
+\end{t_definition}
+
+\begin{t_observation}
+  Platí následující identity: $\binom{n}{k}=\binom{n}{n-k}$, $\binom{n}{0}=\binom{n}{n}=1$, $\binom{n}{1}=\binom{n}{n-1}=n$
+\end{t_observation}
+
+\begin{t_theorem}[odhad faktoriálu]
+  Nechť $n\in\mathbb{N}$, potom platí:
+  \begin{align*}
+    e\left(\frac{n}{e}\right)^n\leq n! \leq en\left(\frac{n}{e}\right)^n
+  \end{align*}
+\end{t_theorem}
+
+\begin{t_proof}[Důkaz (indukcí přes $n$)]
+  Pro $n=1$ je rovnost zredukována na $1\leq 1\leq 1$. Můžeme tedy přikročit k indukčnímu kroku. V něm dokážeme každou nerovnost zvlášť. Nejprve se podíváme na horní mez. Z indukčního předpokladu vyplývá následující nerovnost.
+  \begin{align*}
+    n! = n(n-1)! &\leq en(n-1)\left(\frac{n-1}{e}\right)^{n-1}
+  \end{align*}
+  Tuto nerovnost můžeme dále ekvivalentně upravovat.
+  \begin{align*}
+    en(n-1)\left(\frac{n-1}{e}\right)^{n-1}
+    &= en\frac{(n-1)^n}{e^{n-1}}\\
+    &= en\frac{(n-1)^n}{e^{n-1}}\cdot\frac{n^n}{n^n}\cdot\frac{e}{e}\\
+    &= en\left(\frac{n}{e}\right)^n\cdot e\left(\frac{n-1}{n}\right)^n\\
+    &= en\left(\frac{n}{e}\right)^n\cdot e\left(1-\frac{1}{n}\right)^n
+  \end{align*}
+  Nyní použijeme fakt, že $\left(1-\frac{1}{n}\right)^n\leq \frac{1}{e}$, a nerovnost doupravíme do požadované formy.
+  \begin{align*}
+    en\left(\frac{n}{e}\right)^n\cdot e\left(1-\frac{1}{n}\right)^n
+    &\leq en\left(\frac{n}{e}\right)^n\cdot \left(\frac{1}{e^n}\right)^n\\
+    &= en\left(\frac{n}{e}\right)^n
+  \end{align*}
+  Tím je důkaz pravé nerovnosti hotov. Nyní provedeme analogickou úvahu i pro levou nerovnost, začneme opět u indukčního předpokladu.
+  \begin{align*}
+    n! = n(n-1)! &\geq en\left(\frac{n-1}{e}\right)^{n-1}
+  \end{align*}
+  Provedeme podobné ekvivalentní úpravy jako u minulého případu.
+  \begin{align*}
+    en\left(\frac{n-1}{e}\right)^{n-1}
+    &= en\left(\frac{n-1}{e}\right)^{n-1}\cdot\frac{n^n}{n^n}\cdot\frac{e}{e}\\
+    &= e\left(\frac{n-1}{n}\right)^{n-1}\cdot\frac{n^ne}{e^{n}}\\
+    &= \frac{e^2\left(\frac{n}{e}\right)^n}{\left(\frac{n}{n-1}\right)^{n-1}}\\
+    &= \frac{e^2\left(\frac{n}{e}\right)^n}{\left(1+\frac{1}{n-1}\right)^{n-1}}
+  \end{align*}
+  Přišel čas na připomenutí faktu, že $\left(1-\frac{1}{n}\right)^n\leq \frac{1}{e}$. Jelikož je však část výraz ve jmenovateli, nesmíme zapomenout nerovnost otočit.
+  \begin{align*}
+    \frac{e^2\left(\frac{n}{e}\right)^n}{\left(1+\frac{1}{n-1}\right)^{n-1}}
+    &\geq \frac{e^2\left(\frac{n}{e}\right)^n}{\left(e^{\frac{1}{n-1}}\right)^{n-1}}\\
+    &= \frac{e^2\left(\frac{n}{e}\right)^n}{e}\\
+    &= e\left(\frac{n}{e}\right)^n
+  \end{align*}
+  Podařilo se nám tedy úspěšně dokázat horní i dolní mez pro faktoriál. Důkaz je dokončen.
+\end{t_proof}
+
+Ukazuje se, že tento odhad bohužel není příliš těsný. Lepší aproximaci poskytuje takzvaná Stirlingova formule. Její důkaz ale vyžaduje netriviální využití gamma funkce, proto jej zde vynecháme.
+\begin{t_fact}[Stirlingova formule]
+  Nechť $n\in\mathbb{N}$, potom platí:
+  \begin{align*}
+    n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n
+  \end{align*}  
+\end{t_fact}
+
+Stirlingův odhad faktoriálu je ve skutečnosti natolik těsný, že jej můžeme využít k velmi dobrému odhadu kombinačních čísel. Stačí jej substituovat do vzorce $\frac{n!}{k!(n-k)!}$. Jediná slabina tohoto odhadu je, že je jako matematický výraz příliš komplikovaný. Proto si ukážeme odhad, který je o epsilon horší, ale zároveň výrazně jednodušší.
+
+\begin{t_theorem}[odhad kombinačního čísla]
+  Nechť $n,k\in\mathbb{N}$, $k\leq n$, potom platí:
+  \begin{align*}
+    \left(\frac{n}{k}\right)^k\leq \binom{n}{k}\leq \frac{1}{e}\cdot\left(\frac{en}{k}\right)^k
+  \end{align*}
+\end{t_theorem}
+\begin{t_proof}
+  \begin{align*}
+    \binom{n}{k}=\frac{n(n-1)\dots(n-k+1)}{k!}
+    \leq \frac{n^k}{k!}
+    \leq \frac{n^k}{e\left(\frac{k}{e}\right)^k}
+    = \frac{1}{e}\cdot\left(\frac{en}{k}\right)^k
+  \end{align*}
+  \begin{align*}
+    \binom{n}{k}
+    \geq \dots % todo
+    \geq \left(\frac{n}{k}\right)^k
+  \end{align*}
+\end{t_proof}
+
+Z uvedeného odhadu vyplývá speciální případ pro centrální binomické koeficienty.
+\begin{t_corollary}
+  Nechť $n\in\mathbb{N}$, potom platí:
+  \begin{align*}
+    2^n\leq \binom{2n}{n}\leq 2^ne^{n-1}
+  \end{align*}
+\end{t_corollary}
+
+\begin{t_exercise}
+  \item Porovnejte $\binom{80}{20}$, $\binom{90}{20}$, $\binom{90}{80}$, $\binom{80}{60}$, $\binom{90}{30}$, $\binom{80}{10}$.
+  \item Porovnejte $n!$, $\binom{2n}{n}$, $\binom{2n}{n-1}$, $n^{\sqrt{n}}$, $\sqrt{n}^n$.
+  \item Spočítejte, kolik nulových cifer je na konci dekadického zápisu čísla $12723!$.
+  \item Rozhodněte, která z následujících funkcí roste asymptoticky rychleji:
+  \\$f(n)=\binom{10n}{\lceil\sqrt{n}\rceil}$ nebo $g(n)=n^\sqrt{n}$.
+  \item Rozhodněte, která z následujících funkcí roste asymptoticky rychleji. Funkce $f(n)$ označuje počet podmnožin velikosti $n$ množiny obsahující $2n$ prvků. Funkce $g(n)$ označuje počet podmnožin velikosti nejvýše $0,999n$ množiny obsahující $2n$ prvků.
+  \item Označme $r(n)$ počet rovinných grafů na množině vrcholů $1\dots n$ a $g(n)$ na stejné množině vrcholů. Dokažte, že pro každé dostatečně velké $n$ platí:
+  \begin{align*}
+    r(\lfloor n^{1,999} \rfloor)<g(n)<r(n^2)
+  \end{align*}
+  \item Kolik z přirozených čísel $1\dots 420$ není dělitelných 6, 17 ani 42?
+  \item Kolik různých (ne nutně smysluplných) slov vznikne permutací písmen slova \textit{abrakadabra}? Slovem myslíme jen posloupnost znaků.
+\end{t_exercise}
