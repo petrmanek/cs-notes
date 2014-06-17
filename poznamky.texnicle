@@ -88,7 +88,7 @@
         <attribute name="showlogwarningitems" type="bool">0</attribute>
         <attribute name="showloginfoitems" type="bool">0</attribute>
         <attribute name="showlogerroritems" type="bool">1</attribute>
-        <attribute name="pdfviewscrollrect" type="string">{{0, 5368.5881104659275}, {604, 577.71125264317379}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 6637.3361379337912}, {604, 816.99731237805463}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -127,7 +127,7 @@
     </object>
     <object type="TEXFILE" id="z107">
         <attribute name="visiblerect" type="string">{{0, 0}, {632, 772}}</attribute>
-        <attribute name="cursor" type="string">{11564, 0}</attribute>
+        <attribute name="cursor" type="string">{555, 0}</attribute>
         <attribute name="wasopen" type="bool">2</attribute>
         <attribute name="lasteditdate" type="date">424517098.46529698371887207031</attribute>
         <attribute name="istext" type="bool">1</attribute>
@@ -198,12 +198,12 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z112">
-        <attribute name="visiblerect" type="string">{{0, 2227}, {626, 772}}</attribute>
-        <attribute name="cursor" type="string">{7974, 0}</attribute>
+        <attribute name="visiblerect" type="string">{{0, 679}, {626, 772}}</attribute>
+        <attribute name="cursor" type="string">{2402, 0}</attribute>
         <attribute name="wasopen" type="bool">0</attribute>
-        <attribute name="lasteditdate" type="date">424652956.48923498392105102539</attribute>
+        <attribute name="lasteditdate" type="date">424680770.78957802057266235352</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">424652956.88648599386215209961</attribute>
+        <attribute name="fileloaddate" type="date">424680771.19661098718643188477</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="sortindex" type="int32">7</attribute>
         <attribute name="name" type="string">5parovani.tex</attribute>
@@ -222,7 +222,7 @@
         <attribute name="istext" type="bool">1</attribute>
         <attribute name="fileloaddate" type="date">424650718.75879901647567749023</attribute>
         <attribute name="extension" type="string">tex</attribute>
-        <attribute name="cursor" type="string">{10937, 0}</attribute>
+        <attribute name="cursor" type="string">{10486, 0}</attribute>
         <attribute name="sortindex" type="int32">6</attribute>
         <attribute name="name" type="string">4toky.tex</attribute>
         <attribute name="isexpanded" type="bool">0</attribute>
