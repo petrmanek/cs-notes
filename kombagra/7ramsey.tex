@@ -1,1 +1,35 @@
 \section{Ramseyova teorie}
+\begin{t_example}
+  Party příklad % todo
+\end{t_example}
+
+\begin{t_definition}
+  V grafu $G$ definujeme klikovost $\omega(G)$ jako počet vrcholů $n$ největšího úplného grafu $K_n$, který je v $G$ jako podgraf.
+\end{t_definition}
+
+\begin{t_definition}
+  V grafu $G=(V,E)$ je množina vrcholů $I\subseteq V$ považována za nezávislou, pokud pro každé dva vrcholy v $I$ neexistuje v $E$ hrana.
+\end{t_definition}
+
+\begin{t_definition}
+  V grafu $G$ definujeme nezávislost $\alpha(G)$ jako velikost největší nezávislé množiny.
+\end{t_definition}
+
+\begin{t_theorem}[Ramseyova dvoubarevná]
+  Nechť $k,l\in\mathbb{N}$, potom existuje $r\in\mathbb{N}$ takové, že ve všech grafech s alespoň $r$ vrcholy, platí $\omega(G)\geq k$ nebo $\alpha(G)\geq l$.
+\end{t_theorem}
+
+\begin{t_remark}
+  Číslu $r$ pro daná $k, l$ se říká Ramseyovo číslo, značíme jej $R(k, l)$.
+\end{t_remark}
+
+\begin{t_proof}
+  Ukážeme horní odhad Ramseyova čísla, tedy takovou hodnotu, že pro každý větší graf Ramseyova vlastnost určitě platí. Tuto hodnotu označíme jako funkci $r(k,l)$ a pokusíme se jí přesně určit. Zvolíme libovolný graf $G$ na $r(k,l)$ vrcholech. V grafu zafixujeme vrchol $v$ a podíváme se na ostatní vrcholy. Pozorujeme, že je můžeme rozdělit do dvou množin podle incidence s $v$. Nechť množina $A$ obsahuje vrcholy incidentní s $v$ a $B$ všechny ostatní vrcholy.
+  
+  Aby platila Ramseyova vlastnost, musí v $G$ existovat úplný podgraf na $k$ vrcholech nebo nezávislá množina na $l$ vrcholech. Pokud se v množinách $A,B$ nacházejí, máme vyhráno, předpokládejme tedy, že tam nejsou. Množina $A$ stále může tvořit $k$-kliku spolu s vrcholem $v$, pokud v $A$ je úplný podgraf na $k-1$. Podobně může množina $B$ s vrcholem $v$ tvořit nezávislou množinu velikosti $l$, musí v ní ale být nezávislá množina velikosti $l-1$. Získáváme tedy rekurentní požadavek na $r(k,l)$.
+  \begin{align*}
+    r(k,l)=r(k-1,l)+r(k,l-1)+1
+  \end{align*}
+
+  Indukcí můžeme ověřit, že explicitně $r(k,l)=\binom{k+l+2}{k-1}$.
+\end{t_proof}
