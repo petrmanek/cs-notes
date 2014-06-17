@@ -1,6 +1,8 @@
 \section{Ramseyova teorie}
 \begin{t_example}
-  Party příklad % todo
+  Na úvod do Ramseyovy teorie začneme již tradičním příkladem. Mějme večírek, na který pozveme 6 hostů. Tvrdíme, že mezi nimi vždy najdeme trojici lidí, kteří se navzájem znají, nebo trojici lidí, kteří se navzájem určitě neznají. Jak na to přijdeme?
+
+  Zkonstruujeme graf večírku, kde každý host bude jedním vrcholem a každé dva známé spojíme hranou. Tvrzení je ekvivalentní s hledáním kliky nebo nezávislé množiny na třech vrcholech. Podle Ramseyovy věty (viz níže) jednu z nich najdeme na každém grafu velikosti 6 a větší.
 \end{t_example}
 
 \begin{t_definition}
@@ -32,4 +34,55 @@
   \end{align*}
 
   Indukcí můžeme ověřit, že explicitně $r(k,l)=\binom{k+l+2}{k-1}$.
+\end{t_proof}
+
+Nyní drobně změníme úhel pohledu o epsilon. Do současné chvíle nás v grafech zajímaly jen kliky a nezávislé množiny, od teď budeme uvažovat o obarvení úplných grafů. Sluší se však poznamenat, že se jedná o úplně ekvivalentní terminologii, neboť každý graf $(V,E)$ můžeme zakódovat do úplného grafu na $|V|$ vrcholech a dvoubarevného obarvení hran $c:\binom{V}{2}\rightarrow\{1,2\}$, které přiřadí jednu barvu všem hranám v $E$ a druhou barvu všem ostatním hranám.  
+
+\begin{t_definition}
+  Nechť $f:A\rightarrow B$ je funkce, $A,B,A^\prime$ jsou množiny takové, že $A^\prime\subseteq A$. Potom $f\restriction A^\prime: A^\prime\rightarrow B$ je funkce taková, že $\forall a\in A^\prime:f(a)=(f\restriction A^\prime)(a)$. Funkci $f\restriction A^\prime$ říkáme omezení (restrikce) $f$ na množinu $A^\prime$.
+\end{t_definition}
+
+\begin{t_theorem}[Ramseyova vícebarevná spočetná]
+  Pro každé $t\in\mathbb{N}$ (počet barev) a obarvení $c:\binom{\mathbb{N}}{2}\rightarrow\{1,2,\dots t\}$ existuje nekonečná množina $A\subseteq\mathbb{N}$, taková že $c\restriction\binom{A}{2}$ je konstantní.
+\end{t_theorem}
+
+\begin{t_proof}[nekonečnou indukcí]
+  Postupným rozebíráním množiny $\mathbb{N}$ dojdeme až k hledané množině $A$, označíme tedy $A_1=\mathbb{N}$ a nastavíme $i=1$.
+
+  V množině $A_i$ zafixujeme libovolný vrchol $v_i$, zbylé vrcholy $v\in A_i\setminus\{v_i\}$ rozdělíme do množin $B_i^1, B_i^2,\dots B_i^t$ podle barvy $c(\{v_i, v\})$. Víme, že množina $A_i$ je nekonečná, proto alespoň jedna z uvedených stejnobarevných podmnožin musí být také nekonečná. Tuto množinu označíme za $A_{i+1}$ a pokračujeme v indukci.
+
+  Nemáme zaručeno, že pokaždé vybereme podmnožinu stejné barvy, podle které jsme vybrali předchozí množinu. Protože je ale indukce nekonečná, alespoň jednu barvu musíme zvolit nekonečněkrát. Vrcholy $v_i$, které odpovídají této barvě, jsou vrcholy hledané množiny $A$.
+\end{t_proof}
+
+\begin{t_theorem}[Ramseyova vícebarevná konečná]
+  Nechť $k\in\mathbb{N}$ (požadovaná velikost), potom existuje $r\in\mathbb{N}$ takové, že pro všechna $n\geq r$ a $t\in\mathbb{N}$, $t$-barevná obarvení $c:\binom{\{1,2,\dots n\}}{2}\rightarrow$ najdeme množinu $A\in\binom{\{1,2,\dots n\}}{2}$ takovou, že $c\restriction A$ je konstantní.
+\end{t_theorem}
+\begin{t_remark}
+  Jednodušeji řečeno, pro každé $k$ existuje $r$ takové, že všechny úplné libovolně obarvené grafy na alespoň $r$ vrcholech obsahují obsahují jednobarevnou kliku velikosti $k$ jako podgraf.
+\end{t_remark}
+
+\begin{t_proof}
+  K důkazu využijeme stejný postup jako u nekonečné varianty. Metodou nekonečného stromu pro dané obarvení vytvoříme posloupnost množin $A_1, A_2,\dots A_d$ a vrcholů $v_1, v_2,\dots v_d$. Stačí nám, když v této posloupnosti bude stejná barva zastoupena $k$-krát. V nejhorším případě se barvy budou střídat a $d\leq tk$.
+
+  Jakmile získáme $k$ zastoupení téže barvy, už máme vyhráno. Zbývá určit velikost $r$. Strom bude mít nejvýše hloubku $tk$, každý vrchol má právě $t$ potomků. Můžeme tedy nejmenší počet vrcholů $r$ odhadnout zespoda jako $\Omega(t^{tk})$. 
+\end{t_proof}
+
+\begin{t_theorem}[Ramseyova vícebarevná spočetná pro $p$-tice]
+  Pro každé $t\in\mathbb{N}$ (počet barev), $p\in\mathbb{N}$ (velikost $p$-tice) a obarvení $c:\binom{\mathbb{N}}{p}\rightarrow\{1,2,\dots t\}$ existuje nekonečná množina $A\subseteq\mathbb{N}$, taková že $c\restriction\binom{A}{p}$ je konstantní.
+\end{t_theorem}
+
+\begin{t_proof}[indukcí podle $p$]
+  Použijeme opět stejnou stromovou konstrukci jako u předchozích důkazů. Pro $p=2$ jsme již větu dokázali, zaměříme se tedy na indukční krok. V něm předpokládáme, že pro $p-1$ naše tvrzení platí. Změníme indukci na stromu tak, že v každém jeho vrcholu vytvoříme nové obarvení $(p-1)$-tic $c_i^\prime:\binom{\mathbb{A_i\setminus\{v_i\}}}{p-1}\rightarrow\{1,2,\dots t\}$ takové, že $c_i^\prime(q)=c(q,v_i)$. Na toto obarvení už můžeme použít indukční předpoklad, získáme nekonečnou množinu $C$, na které je $c_i^\prime$ konstantní. A ze způsobu, jak jsme si $c_i^\prime$ zadefinovali, víme, že také všechny $p$-tice složené z $(p-1)$-tic z $C$ a $v_i$ mají konstantní barvu. Množina $C$ je nekonečně velká a konstantně barevná vůči $v_i$, můžeme jí tedy označit $A_{i+1}$ a pokračovat v indukci na stromu.
+\end{t_proof}
+
+\begin{t_theorem}[Ramseyova vícebarevná konečná pro $p$-tice]
+  Nechť $k\in\mathbb{N}$ (požadovaná velikost) a $p\in\mathbb{N}$ (velikost $p$-tice), potom existuje $r\in\mathbb{N}$ takové, že pro všechna $n\geq r$ a $t\in\mathbb{N}$, $t$-barevná obarvení $c:\binom{\{1,2,\dots n\}}{p}\rightarrow$ najdeme množinu $A\in\binom{\{1,2,\dots n\}}{p}$ takovou, že $c\restriction A$ je konstantní.
+\end{t_theorem}
+
+\begin{t_proof}
+  Dokážeme tvrzení: "Nekonečná verze Ramseyovy věty pro $p$-tice implikuje konečnou." Dokazovat ale budeme jeho obměnu, tedy: "Pokud neplatí konečná verze Ramseyovy věty pro $p$-tice, neplatí ani nekonečná verze."
+
+  Pokud neplatí nekonečná verze, existuje $p$ (velikost $p$-tice), $t$ (počet barev), nekonečně mnoho $n$ a špatné obarvení $c:\binom{\{1,2,\dots n\}}{p}\rightarrow \{1,2.\dots t\}$ takové, že pro všechny množiny $A\subseteq\{1,2,\dots n\}$ není $c\restriction\binom{A}{p}$ konstantní. Vytvoříme množiny $Š_1, Š_2,\dots Š_n$ všech špatných obarvení na $\{1,2,\dots n\}$. Protože existuje $c$, víme, že $Š_n$ je neprázdná. Nyní zadefinujeme operaci "zkrácení" obarvení $d$ tak, že $z(d)=d\restriction\binom{\{1,2,\dots n-1\}}{p}$. Pozorujeme, že zkrácení každého špatného obarvení je samo špatným obarvením. Formálněji, $\forall c\in Š_n:z(c)\in Š_{n-1}$. Všechny $Š_i$ tedy jsou rovněž neprázdné.
+
+  Zkonstruujeme graf $T$, kde vrcholy budou všechna špatná obarvení. Hrany povedou mezi obarveními $d,e$, pro které platí $e=z(d)$. Pozorujeme, že $T$ je strom s nekonečným počtem vrcholů, každý vrchol však má konečný stupeň. To implikuje, že existuje nekonečná cesta z kořene dolů, tedy posloupnost $c_0,c_1,c_2,\dots$ taková, že $c_i=z(c_{i+1})$ a $c_i\in Š_i$. Položíme $c_\infty=\bigcup_{i\geq 0} c_i$ a zamyslíme se. Toto zobrazení je přesně špatným obarvením $\binom{\mathbb{N}}{p}$, které vyvrátí spočetnou vícebarevnou Ramseyovu větu pro $p$-tice.
 \end{t_proof}
