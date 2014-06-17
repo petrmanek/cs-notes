@@ -10,9 +10,9 @@ Some Computer Science notes I thought I would share with others. So far, they ar
 - Flows in networks
 - Matchings in bipartite graphs
 - Connectivity of undirected graphs
+- Ramsey Theory
 
 ## Topics left to cover
-- Ramsey Theory
 - Combinatorial codes
 
 ## Availability
