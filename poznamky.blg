@@ -8,12 +8,13 @@ A level-1 auxiliary file: kombagra/3roviny.aux
 A level-1 auxiliary file: kombagra/4toky.aux
 A level-1 auxiliary file: kombagra/5parovani.aux
 A level-1 auxiliary file: kombagra/6souvislost.aux
+A level-1 auxiliary file: kombagra/7ramsey.aux
 I found no \citation commands---while reading file poznamky.aux
 I found no \bibdata command---while reading file poznamky.aux
 I found no \bibstyle command---while reading file poznamky.aux
 You've used 0 entries,
             0 wiz_defined-function locations,
-            90 strings with 635 characters,
+            91 strings with 655 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
