@@ -88,14 +88,14 @@
         <attribute name="showlogwarningitems" type="bool">0</attribute>
         <attribute name="showloginfoitems" type="bool">0</attribute>
         <attribute name="showlogerroritems" type="bool">1</attribute>
-        <attribute name="pdfviewscrollrect" type="string">{{0, 7714.048830696298}, {604, 577.71125264304646}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 2064.5329071839333}, {604, 577.71125261191992}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
         <attribute name="logoutputlevel" type="int16">0</attribute>
         <attribute name="editorwidth" type="float">679</attribute>
         <attribute name="controlswidth" type="float">235</attribute>
-        <attribute name="consoleview" type="int16">1</attribute>
+        <attribute name="consoleview" type="int16">0</attribute>
         <relationship name="project" type="1/1" destination="PROJECT" idrefs="z103"></relationship>
     </object>
     <object type="TEXFILE" id="z105">
@@ -198,8 +198,8 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z112">
-        <attribute name="visiblerect" type="string">{{0, 2452}, {641, 747}}</attribute>
-        <attribute name="cursor" type="string">{8113, 0}</attribute>
+        <attribute name="visiblerect" type="string">{{0, 2669}, {641, 455}}</attribute>
+        <attribute name="cursor" type="string">{8130, 0}</attribute>
         <attribute name="wasopen" type="bool">0</attribute>
         <attribute name="lasteditdate" type="date">424735049.94380998611450195312</attribute>
         <attribute name="istext" type="bool">1</attribute>
