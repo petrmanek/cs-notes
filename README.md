@@ -29,7 +29,7 @@ V první řadě bych vám chtěl poděkovat. Jsem rád se vám mé poznámky lí
 Pokud máte návrhy na rozšíření, ale nechcete je sami realizovat, budu rád, pokud se o ně podělíte v podobě feature requestu na issue trackeru.  
 
 ## Licence
-Poznámky jsem pořizoval osobně na přednáškách [http://mj.ucw.cz/vyuka/1314/kg1/](Martina Mareše) a [http://atrey.karlin.mff.cuni.cz/~rakdver/tea_kgi_l14.html](Zdeňka Dvořáka). Kromě jejich teorie a výkladu jsem při dokončování do poznámek zahrnul několik příkladů z cvičení [http://iuuk.mff.cuni.cz/~pangrac/vyuka/kg14.html](Ondřeje Pangráce). Tímto jim budiž vzdán můj vroucí dík. Projekt informatických poznámek dávám volně k dispozici jako výukový materiál. Používat a šířit jej můžete v souladu s MIT licencí.
+Poznámky jsem pořizoval osobně na přednáškách [Martina Mareše](http://mj.ucw.cz/vyuka/1314/kg1/) a [Zdeňka Dvořáka](http://atrey.karlin.mff.cuni.cz/~rakdver/tea_kgi_l14.html). Kromě jejich teorie a výkladu jsem při dokončování do poznámek zahrnul několik příkladů z cvičení [Ondřeje Pangráce](http://iuuk.mff.cuni.cz/~pangrac/vyuka/kg14.html). Tímto jim budiž vzdán můj vroucí dík. Projekt informatických poznámek dávám volně k dispozici jako výukový materiál. Používat a šířit jej můžete v souladu s MIT licencí.
 
 ## Kam se dále podívat
  - http://www.mff.cz/data/ADS2-Mares_KGA.pdf
