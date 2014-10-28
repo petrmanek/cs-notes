@@ -1,0 +1,72 @@
+\section{Párování 2}
+\begin{t_definition}
+  Buď $G=(V,E)$ graf. Párování v $G$ je množina hran $M \subseteq E$ taková, že každý vrchol sousedí nejvýše s 1 hranou $M$. \\
+\end{t_definition}
+\begin{t_definition}
+  Volný vrchol v párování $M$ je vrchol, který není v žádné párovací hraně, tedy $\forall e \in M: \; v \not\in e$.
+\end{t_definition}
+\begin{t_definition}
+  Párování $M$ je největší (anglicky maximum), pokud neexistuje párování $M'$, kde $|M'| > |M|$.
+\end{t_definition}
+\begin{t_definition}
+  Párování $M$ je maximální (anglicky maximal), pokud neexistuje párování $M'$, kde $M \neq M'$ a $M \subseteq M'$.
+\end{t_definition}
+\begin{t_definition}
+  Párování $M$ je perfektní, pokud nemá žádný volný vrchol.
+\end{t_definition}
+\begin{t_definition}
+  Mějme $G=(V,E)$ graf, $M$ párování v $G$. Střídavá cesta vzhledem k $M$ je cesta v $G$, na níž se střídají párovací a nepárovací hrany.
+\end{t_definition}
+\begin{t_definition}
+  Volná střídavá cesta (VSC) (jinak také zlepšující cesta, neboli augmenting path) je střídavá cesta, která spojuje 2 volné vrcholy.
+\end{t_definition}
+\begin{t_lemma}
+  Buď $G=(V,E)$ graf, $M$ jeho párování. Pak $M$ je největší $\iff$ $M$ nemá VSC.
+\end{t_lemma}
+\begin{t_proof}
+  Implikaci zleva doprava ukážeme jednoduše sporem. Pokud by $M$ mělo VSC, vyměníme v té VSC párovací hrany za nepárovací a naopak. Tím jsme dostali párování, které má o jednu párovací hranu více, což je spor s tím, že $M$ bylo největší párování. \\
+  Opačná implikace obměnou: Nechť M není největší. Volme tedy $M'$ párování v $G$ takové, že $|M'| > |M|$. Označme si $N = M \triangle M'$ a uvažme graf $H=(V,N)$. Pozorování: 
+  \begin{itemize}
+    \item V tomto grafu má každý vrchol stupeň nejvýše 2, což vyplývá z volby množiny hran, tedy každá komponenta $H$ je cesta anebo kružnice. 
+    \item Každá kružnice má stejný počet hran z $M$ jako z $M'$. 
+    \item Platí $|M'| > |M|$ \implies existuje komponenta $H$, která má více hran z $M'$ než z $M$. Tato komponenta je však VSC pro $M$.
+  \end{itemize}
+\end{t_proof}
+  Již tedy víme něco o párování, chtěli bychom tedy algoritmus, který nalezne největší párování.
+\begin{t_observation}
+  Stačí algoritmus, který pro zadaný $G$ a jeho párování $M$ najde větší párování, nebo rozhodne, že takové neexistuje.
+\end{t_observation}
+\begin{t_definition}
+  Kytka v grafu $G$ s párováním $M$ je podgraf, který je složen z kružnice $C_i$, která má lichou délku a právě $\lfloor i/2 \rfloor$ párovacích hran, a střídavé cesty sudé délky, která má na svém konci volný vrchol a její druhý konec je vrchol na kružnici $C_i$. Kružnici nazýváme \textit{květ} a cestu \textit{stonek}. Pozorujeme, že z květu vychází nejvýše jedna párovací hrana do stonku. (Kytka nemusí mít stonek.)
+\end{t_definition}
+\begin{t_definition}
+  Kontrakce květu $K$ je operace, kde všechny vrcholy kružnice nahradíme jedním novým vrcholem $V_K$, jehož sousedé jsou sjednocení sousedů všech vrcholů květu $K$. Graf vzniklý kontrakcí květu značíme $G.K$ a jeho párování $M.K$
+\end{t_definition}
+\begin{t_lemma}
+  \begin{enumerate}
+    \item $G$ je graf, $K$ květ kytky v $M$. Pak $M$ je největší v $G$ $\iff$ $M.K$ je největší v $G.K$.
+    \item Když najdeme v $G.K$ párování $M'$ větší, než $M.K$, tak z něj umíme získat v polynomiálním čase párování $M''$ v grafu $G$, které je větší, než $M$.
+  \end{enumerate}
+\end{t_lemma}
+\begin{algorithm}
+  \caption{Edmonsův kytičkový (blossom) algoritmus (1963)}
+  Kostra algoritmu: \\
+  Zkus najít VSC anebo kytku v $(G,M)$. 
+    \begin{itemize}
+      \item Pokud najdeš VSC, tak zlepši $M$.
+      \item Pokud najdeš kytku, zavolej se na $(G.K, M.K)$ Pokud $M.K$ lze zlepšit, zlepši $M$, jinak konec.
+    \end{itemize}
+  \end{enumerate}
+  Pokud už není ani VSC ani kytka, konec. \\
+  \textbf{Algoritmus:} \\
+  Vstup: graf $G$, párování $M$.
+  \begin{enumerate}
+    \item Vytvoř frontu vrcholů $F = \emptyset$, les $L = \emptyset$. 
+    \item Najdi volné vrcholy, vlož je do $F$ a do $L$ na hladinu 0.
+    \item Dokud $F \neq \emptyset$:
+    \item Vyjmi první vrchol z fronty $F$, přiřaď ho do $v$ a označ $h$ hladinu $v$.
+    \item Pokud je $h$ lichá, zvolím $y$ vrchol spojený s $v$ párovací hranou. Pokud $y \not\in L$, zařaď $y$ do $F$, přidej $y$ do $L$ spolu s $vy$ na hladinu $h+1$. Jinak $y \in L$, pak je $y$ na hladině $h$, tedy najdu VSC nebo $K$.
+    \item Pokud je $h$ sudá, tak si zvolím $Y$ jako množinu vrcholů dosažitelných z $v$ po nepárovací hraně. Máme dvě možnosti - buď $\exists y \in Y, y \in L, h(y)$ je sudé $\implies$ najdu VSC, nebo $K$; anebo $\forall y \in Y$ nepatřící do $L$, zařaď $y$ do $F$, přidej $y$ a $vy$ do $L$ na hladinu $h+1$.
+  \end{enumerate}
+  Pokud se F se vyprázdní bez nalezení VSC nebo kytky, $M$ je největší párování.
+\end{algorithm}

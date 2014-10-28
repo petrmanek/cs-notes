@@ -1,24 +1,37 @@
-Computer Science Notes
-======================
+Informatické poznámky
+=====================
 
-Some Computer Science notes I thought I would share with others. So far, they are only in Czech. If you wish, you can help translate them into other languages. The most recent version is available [here](./poznamky.pdf).
+Zapisováno s láskou v letním semestru 2014. Nejnovější verze ke stažení [zde](./poznamky.pdf).
 
-## Topics covered so far
-- Approximations of combinatorial functions (factorial, binominal coefficients)
-- Generating functions and exponential sums
-- Finite projective planes
-- Flows in networks
-- Matchings in bipartite graphs
-- Connectivity of undirected graphs
-- Ramsey Theory
+## Why the hell is this repo Czech?!
+Because nobody hasn't translated it into English yet! And also because of 42.
 
-## Topics left to cover
-- Combinatorial codes
+## Zpracovaná témata
+1. Kombinatorika a grafy
+   - Aproximace faktoriálu a kombinačních čísel
+   - Vytvořující funkce a mocninné řady
+   - Konečné projektivní roviny
+   - Toky v sítích
+   - Párování v bipartitních grafech
+   - Souvislost neorientovaných grafů
+   - Ramseyova teorie
 
-## Availability
-I made the notes on Computer Science lectures and added some details from other papers. The whole bundle is open sourced and available to the public under the MIT license.
+## Plán rozvoje
+- Kombinatorické kódy (kapitola Kombinatorika a grafy)
 
-## See also
+## Pokud chcete přispět
+V první řadě bych vám chtěl poděkovat. Jsem rád se vám mé poznámky líbí a rozhodli jste se k nim přispět. Úpravy rozděluji do tří skupin:
+
+1. Drobná doplnění (zajímavé příklady, související věty, motivace) - forkněte tento repozitář a udělejte, co musíte, pak mi pošlete pull request a já provedu merge.
+2. Opravy chyb (indexy, důkazy, případně grammar nazi) - ke sledování chyb používám githubí issue tracker, prosím svěřte svůj názor (a popř. návrhy na vyřešení) jemu.
+3. Rozsáhlejší příspěvky (nové sekce nebo kapitoly) - viz možnost 1., malá prosba: používejte prosím makra z hlavního souboru a dodržujte konvence tohoto projektu.
+
+Pokud máte návrhy na rozšíření, ale nechcete je sami realizovat, budu rád, pokud se o ně podělíte v podobě feature requestu na issue trackeru.  
+
+## Licence
+Poznámky jsem pořizoval osobně na přednáškách [Martina Mareše](http://mj.ucw.cz/vyuka/1314/kg1/) a [Zdeňka Dvořáka](http://atrey.karlin.mff.cuni.cz/~rakdver/tea_kgi_l14.html). Kromě jejich teorie a výkladu jsem při dokončování do poznámek zahrnul několik příkladů z cvičení [Ondřeje Pangráce](http://iuuk.mff.cuni.cz/~pangrac/vyuka/kg14.html). Tímto jim budiž vzdán můj vroucí dík. Projekt informatických poznámek dávám volně k dispozici jako výukový materiál. Používat a šířit jej můžete v souladu s MIT licencí.
+
+## Kam se dále podívat
  - http://www.mff.cz/data/ADS2-Mares_KGA.pdf
  - http://kam.mff.cuni.cz/~valla/kg.pdf
  - http://math.or.cz/diskretka/2pocitani.pdf
