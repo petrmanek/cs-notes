@@ -1,9 +1,7 @@
 all:
-	./pdflatex.engine poznamky . 3 1 1 1 bibtex .
-	./pdflatex.engine poznamky . 3 1 1 2 bibtex .
-	./pdflatex.engine poznamky . 3 1 1 3 bibtex .
-	rm -rf *.out *.aux *.bbl *.log
+	pdflatex -synctex=1 -file-line-error -interaction=nonstopmode --output-directory=. poznamky
+	rm -rf *.out *.aux *.bbl *.log */*.aux
 
 clean:
-	rm poznamky.pdf poznamky.synctex.gz poznamky.blg poznamky.toc
+	rm -rf poznamky.pdf poznamky.synctex.gz poznamky.blg poznamky.toc poznamky.log poznamky.aux poznamky.out */*.aux
 
