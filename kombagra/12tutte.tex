@@ -1,0 +1,56 @@
+\section{Párování podruhé}
+
+\begin{t_definition}
+  Buď $G=(V,E)$ graf. Lichou komponentou grafu $G$ budeme označovat komponentu souvislosti grafu $G$, která má lichou velikost.
+\end{t_definition}
+
+\begin{t_definition}
+  Mějme graf $G=(V,E)$. Pak $\mathrm{odd}(G)$ bude značit počet lichých komponent v grafu $G$.
+\end{t_definition}
+
+\begin{t_definition}
+  Buď $G=(V,E)$ graf, $S \subseteq V$. Poté grafem $G-S$ značíme graf vzniklý odstraněním množiny vrcholů $S$.
+\end{t_definition}
+
+\begin{t_theorem}{Tutteova, 1947}
+  Nechť $G=(V,E)$ je graf. Potom $G$ má perfektní párování $\iff \forall S \subseteq V : \; \mathrm{odd}(G-S) \leq |S|$.
+\end{t_theorem}
+\begin{t_remark}
+  Této podmínce se říká Tutteova podmínka. Lze také najít analogii mezi Hallovou podmínkou a Tutteovou podmínkou bez využití důkazu Hallovy, nebo Tutteovy věty.
+\end{t_remark}
+
+\begin{t_proof}
+  Implikace zleva doprava: Nechť $G$ má perfektní párování $M$. Volme $S \subseteq V$. V každé liché komponentně $G-S$ je alespoň jeden vrchol spárovaný s vrcholem v $S$. Tudíž $|S| \geq \mathrm{odd}(G-S)$. \\
+  Druhou implikaci ukážeme sporem. Nechť $G$ splňuje Tutteovu podmínku, ale nemá perfektní párování. Volme $G$ tak, aby měl co nejvíce hran mezi všemi protipříklady na $|V|$ vrcholech. $G$ splní Tutteovu podmínku, tedy počet vrcholů musí být sudý. Označíme si $S = \{v \in V, \mathrm{deg}(v) = |V| - 1 \}$ a rozlišíme dva případy
+  \begin{enumerate}
+    \item Každá komponenta $G-S$ je úplný graf. Tam už triviálně nalezneme párování a tedy spor.
+	\item Alespoň jedna komponenta $G-S$ není úplný graf. Nechť je tedy $K$ komponenta $G-S$, která obsahuje nesousední vrcholy $x,y$. Volme $x,y$ tak, aby měly společného souseda $s \in K$. $s \not\in S \rightarrow \exists t \in V \setminus S$ nesousedící s $S$, to vyplývá z volby $S$. Označme $G_1 = (V, E \cup \{xy\}), \; G_2 = (V, E \cup \{st\}), \; e_1 = \{x,y\}, \; e_2 = \{s,t\}$. Oba tyto grafy mají více hran a jelikož jsme volili protipříklad s co nejvíce hranami, musí tyto grafy mít perfektní párování. Vezměme tedy $M_1$ perfektní párování v grafu $G_1$, $M_2$ perfektní párování v grafu $G_2$. Párování $M_1$ obsahuje hranu $e_1$, $M_2$ obsahuje $e_2$. Kdyby ne, tak snadno dojdeme ke sporu, jelikož jsme hranu využít nemuseli a tedy máme párování i $G$. Zvolme si $N = M_1 \triangle M_2$. Každý vrchol poté sousedí buď s žádným, nebo dvěma hranami $N$ a tedy $N$ tvoří sjednocení sudých kružnic nebo izolovaných vrcholů a jak $e_1, e_2 \in N$. Označme si $C$ sudý cyklus obsahující $e_1$.
+	\begin{itemize}
+      \item $e_2 \not\in C \rightarrow$ na $C$ prohodíme párovací hrany a máme párování $G$, což je spor.
+	  \item $e_2 \in C$, bez újmy na obecnosti $C$ obsahuje cestu mezi $x$ a $t$ neobsahující $e_1$ ani $e_2$. Poté použijeme hrany $M_1$ na cestě $t\rightarrow x$, hranu $\{x,s\}$, hrany $M_2$ na zbytku kružnice $C$ a hrany $M_1$ ve zbytku grafu $G$, tedy u vrcholů $V \setminus C$. Našli jsme perfektní párování, tedy spor.
+	\end{itemize}
+  \end{enumerate}
+\end{t_proof}
+
+\begin{t_theorem}{Petersenova věta, 189?}
+  Každý 2-souvislý 3-regulární graf má perfektní párování.
+\end{t_theorem}
+
+\begin{t_proof}
+  $G=(V,E)$, 2-souvislý, 3-regulární graf, ověřme Tatteovu podmínku. Volme $\emptyset \neq S \subseteq V$. 2 pomocná tvrzení:
+  \begin{enumerate}
+    \item Z každé komponenty $G-S$ vedou aspoň 2 hrany do $S$ díky 2-souvislosti.
+    \item Z každé liché komponenty $G-S$ vede lichý počet hran do $S$, jelikož $\sum_{v \in K} \mathrm{deg}_G (v)$ je lichý
+  \end{enumerate}
+  Spojením těchto tvrzení dostaneme, že z každé liché komponenty vedou 3 hrany do $S$, a navíc z každého vrcholu vedou maximálně 3 hrany do $G-S$.
+\end{t_proof}
+
+\begin{t_remark}
+  Existují 3-regulární grafy $G$ bez perfektního párování.
+\end{t_remark}
+\begin{t_remark}
+  Existují 2-souvislé grafy $G$ s vrcholy stupně $\mathrm{deg}(v) \in \{3,4\}$ a $\mathrm{deg}(v) \in \{3,5\}$ bez perfektního párování.
+\end{t_remark}
+
+
+
