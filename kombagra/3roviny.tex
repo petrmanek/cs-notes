@@ -7,7 +7,7 @@
     \\$\forall K,L\in\mathcal{L},K\neq L : |K\cap L|=1$
     \item[(A2)]
     \textit{Každé dva různé body určují právě jednu přímku.}
-    \\$\forall x,y\in X,X\neq Y : \exists! L\in\mathcal{L} : \{x, y\}\subseteq L$
+    \\$\forall x,y\in X,x\neq y : \exists! L\in\mathcal{L} : \{x, y\}\subseteq L$
     \item[(A0)]
     \textit{Existuje čtveřice bodů taková, že žádné tři body z ní neleží na společné přímce.}
     \\$\exists Č\in\binom{X}{4}:\forall L\in\mathcal{L}:|Č\cap L|\leq 2$
@@ -28,7 +28,7 @@
   \end{align*}
 \end{t_lemma}
 \begin{t_proof}
-  Uvažme množinu $Č$ za axiomu (A0) a libovolné dvě různé přímky $K, L\in\mathcal{L}$. Podle axiomu (A0) musí platit, že $K$ i $L$ každá protíná nejvýše 2 body z $Č$. Ekvivalentně zapsáno $|K\cap Č|\leq 2$ a $|L\cap Č|\leq 2$. To znamená, že $|(K\cup L)\cap Č|\leq 4$.
+  Uvažme množinu $Č$ z axiomu (A0) a libovolné dvě různé přímky $K, L\in\mathcal{L}$. Podle axiomu (A0) musí platit, že $K$ i $L$ každá protíná nejvýše 2 body z $Č$. Ekvivalentně zapsáno $|K\cap Č|\leq 2$ a $|L\cap Č|\leq 2$. To znamená, že $|(K\cup L)\cap Č|\leq 4$.
   
   Rozlišíme dva případy:
   \begin{enumerate}
@@ -51,7 +51,7 @@
 \end{t_theorem}
 
 \begin{t_proof}
-  Uvažme libovolné dvě přímky $K, L\in\mathcal{L}$. Podle předchozího lemmatu musí existovat bod $x\in X$, který na nich neleží. Můžeme zavést zobrazení $f:K\rightarrow L$ definované tak, že obrazem bodu $t$ je průsečík přímky $\overline{xt}$ a $L$, formálněji: $f(t)=\overline{xt}\cap L$. 
+  Uvažme libovolné dvě přímky $K, L\in\mathcal{L}$. Podle předchozího lemmatu musí existovat bod $x\in X$, který na nich neleží. Můžeme zavést zobrazení $f:K\rightarrow L$ definované tak, že obrazem bodu $t\in K$ je průsečík přímky $\overline{xt}$ a $L$, formálněji: $f(t)=\overline{xt}\cap L$. 
   
   Nyní ukážeme, že $f$ je bijekce, z čehož vyplývá, že přímky $K$ a $L$ mají stejný počet bodů. Aby zobrazení $f$ bylo vzájemně jednoznačné, musí být zároveň prosté a na. 
   \begin{itemize}
