@@ -20,7 +20,7 @@ Because nobody hasn't translated it into English yet! And also because of 42.
 - Kombinatorické kódy (kapitola Kombinatorika a grafy)
 
 ## Pokud chcete přispět
-V první řadě bych vám chtěl poděkovat. Jsem rád se vám mé poznámky líbí a rozhodli jste se k nim přispět. Úpravy rozděluji do tří skupin:
+V první řadě bych vám chtěl poděkovat. Jsem rád, že se vám mé poznámky líbí a rozhodli jste se k nim přispět. Úpravy rozděluji do tří skupin:
 
 1. Drobná doplnění (zajímavé příklady, související věty, motivace) - forkněte tento repozitář a udělejte, co musíte, pak mi pošlete pull request a já provedu merge.
 2. Opravy chyb (indexy, důkazy, případně grammar nazi) - ke sledování chyb používám githubí issue tracker, prosím svěřte svůj názor (a popř. návrhy na vyřešení) jemu.
